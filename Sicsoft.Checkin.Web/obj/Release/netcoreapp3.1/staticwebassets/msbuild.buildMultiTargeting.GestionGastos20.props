@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GestionGastos20.props" />
+</Project>

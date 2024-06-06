@@ -1,0 +1,141 @@
+﻿@page
+@model NONPO.Pages.Rangos.NuevoModel
+@{
+    ViewData["Title"] = "Rangos";
+}
+
+
+@section styles {
+
+
+}
+
+@section scripts {
+
+
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Rangos
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="ti-dashboard"></i></a></li>
+        <li class="breadcrumb-item active">Crear Nuevo Rango</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="box-subtitle"> Crear Nuevo Rango</h6>
+
+                        </div>
+                        <div class="col-4">
+                            <a asp-page="./Index" class="nav-link text-dark" style="text-decoration: underline;"><i class="ti-back-left "></i>  Regresar</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <h5>Nombre<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.Nombre" class="form-control" required data-validation-required-message="Este campo es requerido">
+                              
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <h5>Tipo Gasto <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <select asp-for="Objeto.idTipoGasto" class="form-control select2">
+                                            <option value="0">Seleccione Tipo Gasto</option>
+                                            @foreach (var item in Model.Gastos)
+                                            {
+                                                <option value="@item.idTipoGasto">@item.idTipoGasto - @item.Nombre </option>
+                                            }
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <h5>Monto Minimo<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" asp-for="Objeto.MontoMinimo" class="form-control" required data-validation-required-message="Este campo es requerido">
+                      
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <h5>Monto Maximo<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" asp-for="Objeto.MontoMaximo" class="form-control" required data-validation-required-message="Este campo es requerido">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <h5>Cantidad Aprobaciones<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" asp-for="Objeto.CantidadAprobaciones" class="form-control" required data-validation-required-message="Este campo es requerido">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+                      
+
+
+
+
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info" title="Guardar Cambios">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

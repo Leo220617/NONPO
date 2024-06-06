@@ -1,0 +1,107 @@
+﻿@page
+@model GestionGastos20.Pages.Account.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Inicio de Sesión</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+
+
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap-extend.css">
+    <link rel="stylesheet" type="text/css" href="~/css/master_style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/skins/_all-skins.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/vendor_components/bootstrap/dist/css/bootstrap.min.css">
+
+
+
+</head>
+<body class="hold-transition login-page" style="background-color: #7aab23;">
+
+
+    <div class="container h-p100">
+        <div class="row align-items-center justify-content-md-center h-p100">
+            <div class="col-lg-4 col-md-8 col-12">
+                <div class="login-box bg-img rounded" style="background-color:#0d6db8;" data-overlay="5">
+                    <div class="login-box-body">
+                        <h3 class="text-center"><img src="~/amvac.png"></h3>
+                        <h3 class="login-box-msg">Iniciar Sesión</h3>
+
+                        <form method="post" id="formTipos" role="form" novalidate class="form-element text-white">
+                            <div asp-validation-summary="All" style="text-align: center;" class=" text-white"></div>
+                            <input hidden id="UrlPagina" value="@Url.Page("Login", "Buscar")" />
+                            <div class="form-group has-feedback">
+                                <input type="email" asp-for="Input.Email" class="form-control text-white" onchange="javascript: Login();"  placeholder="Email" id="correoElectronico" onkeypress="javascript: Login()" onkeyup="javascript: Login()">
+                                <span asp-validation-for="Input.Email" class="ion ion-email form-control-feedback text-white"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <input type="password" asp-for="Input.Password" class="form-control text-white" placeholder="Contraseña" id="pwd">
+                                <span asp-validation-for="Input.Password" class="ion ion-locked form-control-feedback text-white"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <div class="controls">
+                                    <select asp-for="Input.CedulaJuridica" id="Compañia" required="" style="color: white;" class="form-control" aria-invalid="false">
+                                        <option value="">Seleccione una compañia</option>
+
+                                    </select>
+                                    <div class="help-block"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="basic_checkbox_1">
+                                        <label for="basic_checkbox_1">Remember Me</label>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-6">
+                                    <div class="fog-pwd text-right">
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-success btn-block margin-top-10" onclick="javascript: Guardar();">INICIAR SESIÓN </button>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                        </form>
+
+                        <div class="margin-top-30 text-center">
+                        </div>
+
+                    </div>
+                    <!-- /.login-box-body -->
+                </div>
+                <!-- /.login-box -->
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- jQuery 3 -->
+    <script src="~/assets/vendor_components/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+
+    <!-- popper -->
+    <script src="~/assets/vendor_components/popper/dist/popper.min.js"></script>
+
+    <!-- Bootstrap 4.0-->
+    <script src="~/assets/vendor_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    @*<script src="~/js/Login.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.all.min.js"></script>
+    <script src="/js/Paginas/Login/Login.js">
+
+    </script>
+</body>
+
+</html>

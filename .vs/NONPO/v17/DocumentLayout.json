@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\nuevo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\nuevo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
+              "ViewState": "AQIAAM8AAAAAAAAAAAAAAOQAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-06T20:24:40.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Nuevo.cshtml",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAEMAAABVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-06T20:13:05.829Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

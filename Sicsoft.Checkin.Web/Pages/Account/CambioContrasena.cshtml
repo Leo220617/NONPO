@@ -1,0 +1,305 @@
+﻿@page
+@model GestionGastos20.Pages.Account.CambioContrasenaModel
+@{
+}
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/lib/summernote/summernote-bs4.min.js"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
+    <script src="~/lib/dropzone/dropzone.js"></script>
+    <script src="~/lib/iCheck/icheck.js"></script>
+    <script>
+
+        $(function () {
+            $('.summernote').summernote();
+            $(".select2").select2({
+                theme: 'bootstrap4',
+            });
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        })
+
+
+    </script>
+    <script>
+        var btn = document.getElementById('Guardar');
+        $(document).ready(function () {
+            btn.disabled = true;
+
+        });
+
+        function esMayuscula(letra) {
+            return letra === letra.toUpperCase();
+        }
+
+        function esMinuscula(letra) {
+            return letra === letra.toLowerCase();
+        }
+
+
+        function verificaMayusculas(palabra) {
+            var i = 0;
+            for (var index = 0; index < palabra.length; index++) {
+                var letraActual = palabra.charAt(index);
+                if (isNaN(letraActual)) {
+                    if (tiene_caracteres(letraActual) == 0) {
+
+                        if (esMayuscula(letraActual)) {
+                            i++;
+                        }
+                    }
+                }
+
+
+
+            }
+
+            return i;
+
+        }
+
+
+        function verificaMinisculas(palabra) {
+            var i = 0;
+            for (var index = 0; index < palabra.length; index++) {
+                var letraActual = palabra.charAt(index);
+                if (isNaN(letraActual)) {
+                    if (tiene_caracteres(letraActual) == 0) {
+
+                        if (esMinuscula(letraActual)) {
+                            i++;
+                        }
+                    }
+
+                }
+
+
+            }
+
+            return i;
+
+        }
+
+        function tiene_caracteres(texto) {
+            var regularExpression = "@@/^(?=.*[])(?=.*[!#$%^&*])[-!#$%^&*]{,}$/";
+            for (i = 0; i < texto.length; i++) {
+                if (regularExpression.indexOf(texto.charAt(i), 0) != -1) {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
+        function son_iguales(texto1, texto2) {
+            if (texto1 === texto2) {
+                return 1;
+            } else {
+                console.log(texto1 + " " + texto2);
+                return 0;
+
+            }
+        }
+
+        function tiene_numeros(texto) {
+            var numeros = "0123456789";
+            for (i = 0; i < texto.length; i++) {
+                if (numeros.indexOf(texto.charAt(i), 0) != -1) {
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        //Revisa las contraseñas
+
+        function RevisaContraseña() {
+            console.log("Retorno de mayusculas: -> " + verificaMayusculas($("#clave").val()));
+            if (tiene_numeros($("#clave").val()) == 0) {
+                var x = document.getElementById("ErrorClave");
+                x.style.display = "block";
+                $("#ErrorClave").text("La contraseña debe contener letras y numeros");
+                btn.disabled = true;
+
+            } else if ($("#clave").val().length < 8) {
+                var x = document.getElementById("ErrorClave");
+                x.style.display = "block";
+                $("#ErrorClave").text("La contraseña debe tener una longitud mayor a 8 caracteres");
+                btn.disabled = true;
+            } else if (verificaMayusculas($("#clave").val()) == 0) {
+
+                var x = document.getElementById("ErrorClave");
+                x.style.display = "block";
+                $("#ErrorClave").text("La contraseña debe tener mayúsculas");
+                btn.disabled = true;
+            }
+            else if (verificaMinisculas($("#clave").val()) == 0) {
+                var x = document.getElementById("ErrorClave");
+                x.style.display = "block";
+                $("#ErrorClave").text("La contraseña debe tener minúsculas");
+                btn.disabled = true;
+            }
+            else {
+                var x = document.getElementById("ErrorClave");
+                x.style.display = "none";
+
+                if (tiene_caracteres($("#clave").val()) == 0) {
+                    console.log("No  tiene");
+                    var x = document.getElementById("ErrorClave");
+                    x.style.display = "block";
+                    $("#ErrorClave").text("La contraseña debe contener al menos un caracter especial");
+                    btn.disabled = true;
+                } else {
+                    console.log("Si tiene");
+                    var x = document.getElementById("ErrorClave");
+                    x.style.display = "none";
+                    // btn.disabled = false;
+
+
+                }
+            }
+            var x = document.getElementById("ErrorClave");
+            if (x.style.display == "block") {
+                var boton = document.getElementById("Guardar");
+                boton.disabled = true;
+            } else {
+                var boton = document.getElementById("Guardar");
+                boton.disabled = false;
+            }
+
+            RevisaConfirmacionContraseña();
+
+            
+
+        }
+
+        function RevisaConfirmacionContraseña() {
+            if (son_iguales($("#clave").val(), $("#cClave").val()) == 0) {
+                console.log(" son distintos");
+                var x = document.getElementById("ErrorConfirmacionClave");
+                x.style.display = "block";
+                $("#ErrorConfirmacionClave").text("Las contraseñas no coinciden");
+                btn.disabled = true;
+            } else {
+                console.log("No son iguales");
+                var x = document.getElementById("ErrorConfirmacionClave");
+                x.style.display = "none";
+                btn.disabled = false;
+            }
+
+            var x = document.getElementById("ErrorConfirmacionClave");
+            if (x.style.display == "block") {
+                var boton = document.getElementById("Guardar");
+                boton.disabled = true;
+            } else {
+                var boton = document.getElementById("Guardar");
+                boton.disabled = false;
+            }
+
+        }
+
+    </script>
+    }
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Cambio de contraseña
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="ti-dashboard"></i></a></li>
+        <li class="breadcrumb-item active">Cambiar Contraseña</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="box-subtitle"> Credenciales</h6>
+
+                        </div>
+                        <div class="col-4">
+                            <a asp-page="./Index" class="nav-link text-dark" style="text-decoration: underline;"><i class="ti-back-left "></i>  Regresar</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <h5>Contraseña Nueva:<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="password" placeholder="Digite su nueva contraseña" asp-for="Input.Clave" class="form-control" id="clave" required data-validation-required-message="Este campo es requerido" onchange="javascript: RevisaContraseña()">
+                                        <span style="display:none;" id="ErrorClave" class="text-danger"></span>
+                                        <span asp-validation-for="Input.Clave" class="text-danger"></span>
+
+                                        <br />
+                                        <span class="text-danger">La contraseña debe cumplir con los siguientes requisitos:</span>
+                                        <ul class="text-danger">
+                                            <li class="text-danger">
+                                                A. Estar formada por mínimo 8 Caracteres
+                                            </li>
+                                            <li class="text-danger">B. Mínimo 1 Letra Mayúscula</li>
+                                            <li class="text-danger">C. Mínimo 1 Letra Minúscula</li>
+                                            <li class="text-danger">D. Mínimo 1 Número</li>
+                                            <li class="text-danger">E. Mínimo 1 Carácter Especial</li>
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <h5>Confirmar Contraseña:<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="password" placeholder="Confirme la contraseña" asp-for="Input.Clave" class="form-control" id="cClave" required data-validation-required-message="Este campo es requerido" onchange="javascript: RevisaConfirmacionContraseña()">
+                                        <span style="display:none;" id="ErrorConfirmacionClave" class="text-danger"></span>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="text-danger">Contraseña vencerá en 90 días</span>
+                            </div>
+
+
+
+                        </div>
+
+                        <br />
+
+
+
+
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info" id="Guardar" title="Guardar Cambios">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

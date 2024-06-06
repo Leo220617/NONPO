@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Http
+@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Security.Claims;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using Microsoft.Extensions.Configuration;
+@using Refit;
+
+@inject IHttpContextAccessor httpContextAccessor
+@{
+    var Roles = ((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "Roles").Select(s1 => s1.Value).FirstOrDefault().Split("|");
+}
+
+
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar">
+
+
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="">
+
+                <a asp-page="/Index">
+                    <i class="fa fa-home"></i> <span>Inicio</span>
+
+                </a>
+            <li class="nav-devider"></li>
+            </li>
+            <li class="treeview">
+
+                <a href="#">
+                    <i class="fa fa-th-large"></i> <span>Administrativo</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @if (((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "CambiarClave").Select(s1 => s1.Value).FirstOrDefault() != "True")
+                    {
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "6").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/SeguridadRolesModulos/Index"><img class="imgNav" src="/img/Roles.png"> &nbsp; Roles</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "7").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/Usuarios/Index"><img class="imgNav" src="/img/Usuarios.png"> &nbsp; Usuarios</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "11").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/Dimensiones/Index"><img class="imgNav" src="/img/Dimensiones.png"> &nbsp; Dimensiones</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "1").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/NormasReparto/Index"> <img class="imgNav" src="/img/Normas de Reparto.png"> &nbsp; Normas Reparto</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "2").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/CuentasContables/Index"><img class="imgNav" src="/img/Cuentas Contables.png">   Cuentas Contables</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "3").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/Gastos/Index"><img class="imgNav" src="/img/Compras o Gastos.png"> &nbsp; Tipos Gastos</a></li>
+                        }
+
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "24").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/BitacoraErrores/Index"><img class="imgNav" src="/img/descarga.png"> &nbsp; Errores</a></li>
+                        }
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "28").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/BitacoraLogin/Index"><img class="imgNav" src="/img/Usuarios.png"> &nbsp; Bitacora Logueos</a></li>
+                        }
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "29").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/BitacoraCierres/Index"><img class="imgNav" src="/img/descarga.png"> &nbsp; Bitacora Cierres</a></li>
+                        }
+
+
+                        if (!string.IsNullOrEmpty(Roles.Where(a => a == "27").FirstOrDefault()))
+                        {
+
+                            <li><a asp-page="/Rangos/Index"><img class="imgNav" src="/img/Usuarios.png"> &nbsp; Rangos</a></li>
+                        }
+
+
+                    }
+                </ul>
+            </li>
+
+
+            <li class="nav-devider"></li>
+
+
+            <li class="">
+                @if (((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "CambiarClave").Select(s1 => s1.Value).FirstOrDefault() != "True")
+                {
+
+                    <a asp-page="/Solicitudes/Index">
+                        <i class="fa  fa-calculator"></i> <span>Solicitudes</span>
+
+                    </a>
+                }
+
+            </li>
+
+         
+
+
+
+
+        </ul>
+    </section>
+</aside>

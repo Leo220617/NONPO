@@ -1,0 +1,10 @@
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.csproj.AssemblyReference.cache
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\RefitStubs.g.cs
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.AssemblyInfoInputs.cache
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.AssemblyInfo.cs
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.csproj.CoreCompileInputs.cache
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.MvcApplicationPartsAssemblyInfo.cs
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.MvcApplicationPartsAssemblyInfo.cache
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.RazorAssemblyInfo.cache
+D:\Repositorios - DYD\GestionGastos2.0\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\GestionGastos2.0.RazorAssemblyInfo.cs

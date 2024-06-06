@@ -1,0 +1,137 @@
+﻿@page
+@model GestionGastos20.Pages.NormasReparto.NuevoModel
+@{
+    ViewData["Title"] = "Normas de Reparto";
+}
+
+
+@section styles{
+
+
+}
+
+    @section scripts{
+
+
+}
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Normas de Reparto
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#"><i class="ti-dashboard"></i></a></li>
+            <li class="breadcrumb-item active">Crear Nueva Norma</li>
+        </ol>
+    </section>
+
+
+
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <div class="row">
+                            <div class="col-8">
+                                <h6 class="box-subtitle"> Crear Nueva Norma</h6>
+
+                            </div>
+                            <div class="col-4">
+                                <a asp-page="./Index" class="nav-link text-dark" style="text-decoration: underline;"><i class="ti-back-left "></i>  Regresar</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row">
+
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <h5>Código Norma<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" asp-for="Objeto.CodSAP" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                            <span asp-validation-for="Objeto.idLogin" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <h5>Detalle<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" asp-for="Objeto.Nombre" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                            <span asp-validation-for="Objeto.Nombre" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <h5>Usuario </h5>
+                                        <div class="controls">
+                                            <select asp-for="Objeto.idLogin" class="form-control select2">
+                                                <option value="0">Seleccione Usuario</option>
+                                                @foreach (var item in Model.Usuarios)
+                                            {
+                                                <option value="@item.id">@item.id - @item.Nombre </option>
+                                            }
+
+                                        </select>
+                                        <span asp-validation-for="Objeto.idLogin" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <h5>Dimensión </h5>
+                                    <div class="controls">
+                                        <select asp-for="Objeto.idDimension" class="form-control select2">
+                                            <option value="0">Seleccione Dimensión</option>
+                                            @foreach (var item in Model.Dimensiones)
+                                            {
+                                                <option value="@item.id">@item.codigoSAP - @item.Nombre </option>
+                                            }
+
+                                        </select>
+                                        <span asp-validation-for="Objeto.idDimension" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br />
+
+
+
+
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info" title="Guardar Cambios">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
