@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\rangoslogin.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\rangoslogin.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\nuevo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\nuevo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\rangos\\rangoslogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\rangos\\rangoslogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\models\\vectorusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\models\\vectorusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\models\\recibidousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\models\\recibidousuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\models\\usuariosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\models\\usuariosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steve\\documents\\repositorios dyd\\nonpo\\sicsoft.checkin.web\\pages\\seguridadrolesmodulos\\rolesmodulos.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\seguridadrolesmodulos\\rolesmodulos.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RolesModulos.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\SeguridadRolesModulos\\RolesModulos.cshtml.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\SeguridadRolesModulos\\RolesModulos.cshtml.cs",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\SeguridadRolesModulos\\RolesModulos.cshtml.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\SeguridadRolesModulos\\RolesModulos.cshtml.cs",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAwwKgAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T03:16:52.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VectorUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\VectorUsuarios.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Models\\VectorUsuarios.cs",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\VectorUsuarios.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Models\\VectorUsuarios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T03:11:06.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RecibidoUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\RecibidoUsuarios.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Models\\RecibidoUsuarios.cs",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\RecibidoUsuarios.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Models\\RecibidoUsuarios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T03:09:53.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
-              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Index.cshtml",
-              "ViewState": "AQIAAM8AAAAAAAAAAAAAAOQAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-06T20:24:40.375Z",
+              "Title": "RangosLogin.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml.cs",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAqwIgAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T01:34:13.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Nuevo.cshtml",
-              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
-              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\Nuevo.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAEMAAABVAAAA",
+              "Title": "RangosLogin.cshtml",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Rangos\\RangosLogin.cshtml",
+              "ViewState": "AQIAALMAAAAAAAAAAAAwwLcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-06T20:13:05.829Z",
+              "WhenOpened": "2024-06-14T01:34:06.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UsuariosViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\UsuariosViewModel.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Models\\UsuariosViewModel.cs",
+              "ToolTip": "C:\\Users\\steve\\Documents\\Repositorios DYD\\NONPO\\Sicsoft.Checkin.Web\\Models\\UsuariosViewModel.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Models\\UsuariosViewModel.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAgwA0AAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T02:57:34.1Z",
               "EditorCaption": ""
             }
           ]

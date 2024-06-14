@@ -8,5 +8,6 @@
         public decimal MontoMinimo { get; set; }
         public decimal MontoMaximo { get; set; }
         public int CantidadAprobaciones { get; set; }
+        public bool Activo { get; set; }
     }
 }

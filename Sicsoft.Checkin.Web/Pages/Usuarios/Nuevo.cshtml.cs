@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GestionGastos20.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NONPO.Models;
 using Refit;
 using Sicsoft.Checkin.Web.Servicios;
 
@@ -17,6 +18,7 @@ namespace GestionGastos20.Pages.Usuarios
         private readonly ICrudApi<LoginUsuario, int> service;
         private readonly ICrudApi<UsuariosViewModel, int> users;
         private readonly ICrudApi<RolesViewModel, int> roles;
+      
 
         [BindProperty]
         public LoginUsuario Input { get; set; }
@@ -27,6 +29,7 @@ namespace GestionGastos20.Pages.Usuarios
         [BindProperty]
         public UsuariosViewModel[] Usuarios { get; set; }
 
+     
         public NuevoModel(ICrudApi<LoginUsuario, int> service, ICrudApi<RolesViewModel, int> roles, ICrudApi<UsuariosViewModel, int> users)
         {
             this.service = service;
@@ -39,11 +42,10 @@ namespace GestionGastos20.Pages.Usuarios
             {
                 Roles = await roles.ObtenerLista("");
                 Usuarios = await users.ObtenerLista("");
-
-                var Rol = Roles.Where(a => a.NombreRol.ToUpper().Contains("Aprobador".ToUpper())).FirstOrDefault();
-                var RolA = Roles.Where(a => a.NombreRol.ToUpper().Contains("Administrador".ToUpper())).FirstOrDefault();
-                var RolCA = Roles.Where(a => a.NombreRol.ToUpper().Contains("Contador Aprobador".ToUpper())).FirstOrDefault();
-                Usuarios = Usuarios.Where(a => a.idRol == Rol.idRol || a.idRol == RolA.idRol || a.idRol == RolCA.idRol).ToArray();
+                //var Rol = Roles.Where(a => a.NombreRol.ToUpper().Contains("Aprobador".ToUpper())).FirstOrDefault();
+                //var RolA = Roles.Where(a => a.NombreRol.ToUpper().Contains("Administrador".ToUpper())).FirstOrDefault();
+                //var RolCA = Roles.Where(a => a.NombreRol.ToUpper().Contains("Contador Aprobador".ToUpper())).FirstOrDefault();
+                //Usuarios = Usuarios.Where(a => a.idRol == Rol.idRol || a.idRol == RolA.idRol || a.idRol == RolCA.idRol).ToArray();
             }
             catch (Exception)
             {

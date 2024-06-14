@@ -5,6 +5,7 @@
     public int idLogin { get; set; }
 
     public int id { get; set; }
+    public int idRango { get; set; }
 
     public string CedulaJuridica { get; set; }
 

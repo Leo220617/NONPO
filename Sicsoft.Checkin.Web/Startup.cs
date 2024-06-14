@@ -192,6 +192,11 @@ namespace Sicsoft.Checkin.Web
 .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/Rangos"))
 .AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
 
+
+            services.AddRefitClient<ICrudApi<RangosLoginViewModel, int>>()
+.ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/RangosLogin"))
+.AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
+
             return services;
         }
     }

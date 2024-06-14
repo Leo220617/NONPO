@@ -199,7 +199,7 @@
                     </form>
                 </div>
             </div>
-                <!-- /.box-header -->
+            <!-- /.box-header -->
             <div class="box">
                 <div class="box-body">
                     <div class="table-responsive">
@@ -214,7 +214,7 @@
                                     <th align="center">Monto Minimo</th>
                                     <th align="center">Monto Maximo</th>
                                     <th align="center">Cantidad Aprobaciones</th>
-
+                                    <th align="center">Estado</th>
                                     <th align="center">Acción</th>
 
                                 </tr>
@@ -234,7 +234,16 @@
                                         <td>  @Math.Round(@item.MontoMinimo, 2).ToString("C", formato)</td>
                                         <td>  @Math.Round(@item.MontoMaximo, 2).ToString("C", formato)</td>
                                         <td>@item.CantidadAprobaciones</td>
-                          
+                                        @if (item.Activo)
+                                        {
+
+
+                                            <td align="center" style="padding-top:15px;"><span class="badge badge-pill badge-success">Activo</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td align="center" style="padding-top:15px;"><span class="badge badge-pill badge-warning">Inactivo</span></td>
+                                        }
 
 
                                         <td align="center" style="padding-top:15px;">
@@ -244,6 +253,11 @@
                                             }
                                             &nbsp;
                                             <a onclick="javascript: onClickModal('@item.id')" title="Activar/Desactivar" class="fa fa-trash icono"></a>
+                                             &nbsp;  
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "3").FirstOrDefault()))
+                                            {
+                                                <a asp-page="./RangosLogin" asp-route-id="@item.id" title="Asignar usuarios" class="fa fa-exchange icono" style="color: #FFB700;"> </a>
+                                            }
 
                                         </td>
 
@@ -261,7 +275,7 @@
                                     <th align="center">Monto Minimo</th>
                                     <th align="center">Monto Maximo</th>
                                     <th align="center">Cantidad Aprobaciones</th>
-
+                                    <th align="center">Estado</th>
                                     <th align="center">Acción</th>
 
                                 </tr>
@@ -270,8 +284,7 @@
                     </div>
                 </div>
             </div>
-                <!-- /.box-body -->
-            
+            <!-- /.box-body -->
             <!-- /.box -->
         </div>
         <!-- /.col -->

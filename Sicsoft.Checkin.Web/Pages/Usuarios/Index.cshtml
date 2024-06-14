@@ -169,7 +169,7 @@
                                         <th align="center">Email</th>
                                         <th align="center">Rol</th>
 
-                                        <th align="center">Aprobador</th>
+                                        <th align="center">Rango</th>
                                         <th align="center">Estado</th>
                                         <th align="center">Acción</th>
 
@@ -188,7 +188,6 @@
                                         <td align="left" style="padding-top:15px;"><a style="font-size:15px;  "> @item.Email</a></td>
                                         <td align="left" style="padding-top:15px;"><a style="font-size:15px;  "> @((Model.Roles.Where(a => a.idRol == item.idRol).FirstOrDefault() == null ? "" : Model.Roles.Where(a => a.idRol == item.idRol).FirstOrDefault().NombreRol)) </a></td>
 
-                                        <td align="left" style="padding-top:15px;"><a style="font-size:15px;  "> @((Model.Objeto2.Where(a => a.id == item.idLoginAceptacion).FirstOrDefault() == null ? "" : Model.Objeto2.Where(a => a.id == item.idLoginAceptacion).FirstOrDefault().Nombre))</a></td>
                                         @if (item.Activo.Value)
                                         {
 
@@ -218,7 +217,7 @@
                                     <th align="center">Email</th>
                                     <th align="center">Rol</th>
 
-                                    <th align="center">Aprobador</th>
+                                    <th align="center">Rango</th>
                                     <th align="center">Estado</th>
                                     <th align="center">Acción</th>
 

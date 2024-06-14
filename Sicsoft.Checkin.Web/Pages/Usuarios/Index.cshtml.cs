@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using NONPO.Models;
 using Refit;
 using Sicsoft.Checkin.Web.Servicios;
 
@@ -18,6 +19,7 @@ namespace GestionGastos20.Pages.Usuarios
         private readonly IConfiguration configuration;
         private readonly ICrudApi<UsuariosViewModel, int> service;
         private readonly ICrudApi<RolesViewModel, int> roles;
+      
 
         [BindProperty(SupportsGet = true)]
         public ParametrosFiltros filtro { get; set; }
@@ -31,10 +33,13 @@ namespace GestionGastos20.Pages.Usuarios
         [BindProperty]
         public RolesViewModel[] Roles { get; set; }
 
+
+
         public IndexModel(ICrudApi<UsuariosViewModel, int> service, ICrudApi<RolesViewModel, int> roles)
         {
             this.service = service;
             this.roles = roles;
+          
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -45,6 +50,7 @@ namespace GestionGastos20.Pages.Usuarios
                 Objeto = await service.ObtenerLista(filtro);
                 Objeto2 = Objeto;
                 Roles = await roles.ObtenerLista("");
+    
 
                 return Page();
             }

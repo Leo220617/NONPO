@@ -8,7 +8,7 @@ namespace GestionGastos20.Models
 
         public int? idRol { get; set; }
 
-        public int idRango { get; set; }
+   
 
         [StringLength(200)]
         public string Email { get; set; }
