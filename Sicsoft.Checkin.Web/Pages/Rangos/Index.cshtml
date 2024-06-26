@@ -231,6 +231,7 @@
                                         </td>
                                         <td align="left" style="padding-top:15px;"><a style="font-size:15px;  "> @item.Nombre</a></td>
                                         <td>@item.idTipoGasto</td>
+                                        <td>@((Model.Gastos.Where(a => a.idTipoGasto == item.idTipoGasto).FirstOrDefault() == null ? "" : Model.Gastos.Where(a => a.idTipoGasto == item.idTipoGasto).FirstOrDefault().Nombre))</td>
                                         <td>  @Math.Round(@item.MontoMinimo, 2).ToString("C", formato)</td>
                                         <td>  @Math.Round(@item.MontoMaximo, 2).ToString("C", formato)</td>
                                         <td>@item.CantidadAprobaciones</td>

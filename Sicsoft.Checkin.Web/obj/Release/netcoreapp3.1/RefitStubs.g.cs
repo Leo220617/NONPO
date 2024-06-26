@@ -13,7 +13,7 @@ using System.Threading.Tasks;
  * in the Refit package */
 
 #pragma warning disable
-namespace GestionGastos20.RefitInternalGenerated
+namespace NONPO.RefitInternalGenerated
 {
     [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [AttributeUsage (AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Interface | AttributeTargets.Delegate)]
@@ -32,7 +32,7 @@ namespace GestionGastos20.RefitInternalGenerated
 
 namespace Sicsoft.Checkin.Web.Servicios
 {
-    using GestionGastos20.RefitInternalGenerated;
+    using NONPO.RefitInternalGenerated;
 
     /// <inheritdoc />
     [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
@@ -64,7 +64,7 @@ namespace Sicsoft.Checkin.Web.Servicios
 
 namespace Sicsoft.Checkin.Web.Servicios
 {
-    using GestionGastos20.RefitInternalGenerated;
+    using NONPO.RefitInternalGenerated;
 
     /// <inheritdoc />
     [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]

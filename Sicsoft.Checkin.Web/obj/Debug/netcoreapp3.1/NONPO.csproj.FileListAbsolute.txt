@@ -444,3 +444,7 @@ C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\ne
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\NONPO.sourcelink.json
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Rangos\Editar.cshtml.g.cs
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Rangos\RangosLogin.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Index.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Nuevo.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Observar.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Editar.cshtml.g.cs

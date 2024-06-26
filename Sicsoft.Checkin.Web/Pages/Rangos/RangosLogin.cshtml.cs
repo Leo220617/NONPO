@@ -136,16 +136,15 @@ namespace NONPO.Pages.Rangos
             {
                 recibidos = recibidos.Replace("_", " ");
                 RecibidoUsuarios recibido = JsonConvert.DeserializeObject<RecibidoUsuarios>(recibidos);
-                recibido.usuarios = recibido.usuarios.Replace("ProdCadenaM", "rangosLogin");
-                VectorUsuarios rangosLogin1 = JsonConvert.DeserializeObject<VectorUsuarios>(recibido.usuarios);
-                RangosLoginViewModel[] rangosLoginX = new RangosLoginViewModel[rangosLogin1.usuarios.Length];
+           
+                RangosLoginViewModel[] rangosLoginX = new RangosLoginViewModel[recibido.ProdCadenaM.Length];
 
 
                 short cantidad = 0;
                 if (rangosLoginX.Length > 0)
                 {
 
-                    foreach (var item in rangosLogin1.usuarios)
+                    foreach (var item in recibido.ProdCadenaM)
                     {
 
                         rangosLoginX[cantidad] = new RangosLoginViewModel();

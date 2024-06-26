@@ -65,22 +65,7 @@ namespace GestionGastos20.Pages.Usuarios
                     throw new Exception("La clave debe contener elementos");
                 }
 
-                if (Input.idLoginAceptacion == 0)
-                {
-                    var Rols = await roles.ObtenerLista("");
-                    Usuarios = await users.ObtenerLista("");
-
-                    var Rol = Rols.Where(a => a.NombreRol.ToUpper().Contains("Aprobador".ToUpper())).FirstOrDefault();
-                    Usuarios = Usuarios.Where(a => a.idRol == Rol.idRol).ToArray();
-
-                    if (Usuarios.Count() > 0)
-                    {
-
-
-                        throw new Exception("Debe seleccionar un usuario aprobador");
-                    }
-
-                }
+               
                 await service.Agregar(Input);
                 return RedirectToPage("./Index");
 
