@@ -432,6 +432,11 @@
                                                             <td align="center" style="padding-top:15px;"><span class="badge badge-warning">Pendiente</span></td>
                                                             break;
                                                         }
+                                                    case "G":
+                                                        {
+                                                            <td align="center" style="padding-top:15px;"><span style=" background-color:#E47F05;" class="badge badge-secondary">Espera aprobación</span></td>
+                                                            break;
+                                                        }
                                                     case "S":
                                                         {
                                                             <td align="center" style="padding-top:15px;"><span style=" background-color:#E47F05;" class="badge badge-secondary">Espera segundo aprobador</span></td>
@@ -520,7 +525,14 @@
 
                             </address>
                         </div>
+                        <div class="col-md-6 invoice-col">
+                            <strong>Comentarios Usuario</strong>
+                            <address>
+                                <strong class="text-blue font-size-18"> @Model.Objeto.Comentarios </strong>
 
+
+                            </address>
+                        </div>
 
 
                         <!-- /.col -->
@@ -571,8 +583,16 @@
 
         </div>
     </div>
+    <div class="col-md-6">
 
-    @if ((Model.Objeto.Status == "P" || Model.Objeto.Status == "S") && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
+        <div class="form-group">
+            <label>Comentarios Aprobador</label>
+            <textarea  id="inputComentarios" class="form-control"></textarea>
+
+        </div>
+
+    </div>
+    @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
     {
     <button id="print" class="btn btn-danger" type="button" onclick="javascript: Rechazar()"> <span> Rechazar</span> </button>
     <button id="print" class="btn btn-success" type="button" onclick="javascript: Aprobar()"> <span> Aprobar</span> </button>

@@ -1,0 +1,285 @@
+﻿@page "{id}"
+@model NONPO.Pages.Solicitudes.AdjuntarModel
+@{
+    ViewData["Title"] = "Agregar Solicitudes";
+}
+
+@section styles {
+    <style>
+        .fa {
+            font-size: 25px !important;
+        }
+
+        .lab {
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        .lab2 {
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        .label {
+            color: #fff !important;
+            background-color: #57b846 !important;
+            cursor: pointer;
+            text-decoration: underline;
+            background: none;
+            font-size: 17px;
+            padding: 8px 18px !important;
+        }
+
+        .label-submit {
+            color: #fff !important;
+            background-color: #57b846 !important;
+            cursor: pointer;
+            background: none;
+            font-size: 13px;
+            padding: 8px 18px !important;
+        }
+        /*label
+                                                {
+                                                    font-size: 15px;
+                                                }*/
+
+        #imgGalerias {
+            display: none;
+        }
+
+    </style>
+
+}
+
+@section scripts {
+
+
+    <script type="text/javascript" src="/js/Solicitudes/EditarSolicitud.js"></script>
+
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Solicitudes
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="ti-dashboard"></i></a></li>
+        <li class="breadcrumb-item active">Crear Nueva Solicitud</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <input hidden id="urlGenerar" value="@Url.Page("Adjuntar", "AgregarSolicitud")" />
+            <input hidden id="urlGenerarP" value="@Url.Page("Adjuntar", "AgregarSolicitudP")" />
+
+            <div class="box">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="box-subtitle"> Editar Solicitud</h6>
+
+                        </div>
+                        <div class="col-4">
+                            <a asp-page="./Index" class="nav-link text-dark" style="text-decoration: underline;"><i class="ti-back-left "></i>  Regresar</a>
+
+
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="box-body">
+                    <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input hidden asp-for="Objeto.id" id="id" />
+                    
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Fecha</label>
+                                    <input type="date" disabled class="form-control" id="Fecha" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Tipo de Gasto<span class="text-danger">*</span></h5>
+
+                                    <select asp-for="Objeto.idTipoGasto" class="form-control select2  " id="Gasto">
+                                        <option selected value='0'> Seleccione Gasto </option>
+                                        @foreach (var item in Model.Gastos)
+                                        {
+                                            <option value="@item.idTipoGasto">@item.Nombre</option>
+                                        }
+
+
+                                    </select>
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Moneda</label>
+                                    <select asp-for="Objeto.Moneda" class="form-control" id="selectMoneda">
+                                        <option value="USD" selected>USD</option>
+                                        <option value="CRC">CRC</option>
+
+
+                                    </select>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Monto<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="number" asp-for="Objeto.Monto" id="Monto" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                         
+
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Facturas</h3>
+                            </div>
+                            <div class="col-md-3" id="FacManual" style="text-align: right"> <a onclick="javascript: AbrirModal();" style="color: #57b846;" title="Agregar"><i class="fa fa-plus"></i> Agregar Factura Manual</a></div>
+                        </div>
+
+                        <br />
+
+                       
+
+                    </form>
+                </div>
+            </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Eliminar</th>
+
+                                            <th>Consecutivo Hacienda</th>
+                                            <th class="text-right">Fecha</th>
+                                            <th class="text-right">Proveedor</th>
+
+
+
+                                            <th class="text-right">Total</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <!-- accepted payments column -->
+                            <div class="col-md-12 col-md-6">
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-12 col-md-6 text-right">
+
+
+                                <div>
+                                    <table class="table">
+                                        <tbody>
+                                           
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                               
+                                <div hidden class="total-payment">
+                                    <h3><b>Total :</b>  <span id="totalI">0 </span></h3>
+                                </div>
+
+                                <div class="total-payment">
+                                    <h3><b>Total :</b>  <span id="total">0 </span></h3>
+                                </div>
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                     
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Comentarios</label>
+                                    <textarea asp-for="Objeto.Comentarios" id="inputComentarios" class="form-control"></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <!-- this row will not appear when printing -->
+                        <div class="row no-print">
+
+
+                            <div class="col-6">
+
+                                <button type="button" class="btn btn-success" onclick="javascript: GenerarP()">
+                                    <i class="fa fa-credit-card"></i> Guardar Preliminar
+                                </button>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <button type="button" id="botonG" class="btn btn-info pull-right" onclick="javascript: Generar()">
+                                    <i class="fa fa-credit-card"></i> Enviar Solicitud
+                                </button>
+
+
+                                &nbsp;
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+           
+
+
+        </div>
+
+    </div>
+</section>

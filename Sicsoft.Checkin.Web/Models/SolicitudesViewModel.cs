@@ -18,6 +18,7 @@ namespace NONPO.Models
         public string Comentarios { get; set; }
 
         public int idUsuarioAprobador { get; set; }
+        public FacturasViewModel[] Facturas { get; set; }
     }
 }
     
