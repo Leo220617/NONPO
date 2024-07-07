@@ -54,7 +54,7 @@
 @section scripts {
 
 
-    <script type="text/javascript" src="/js/Solicitudes/EditarSolicitud.js"></script>
+    <script type="text/javascript" src="/js/Solicitudes/AdjuntarSolicitud.js"></script>
 
 }
 
@@ -111,7 +111,7 @@
                                 <div class="form-group">
                                     <h5>Tipo de Gasto<span class="text-danger">*</span></h5>
 
-                                    <select asp-for="Objeto.idTipoGasto" class="form-control select2  " id="Gasto">
+                                    <select disabled asp-for="Objeto.idTipoGasto" class="form-control select2  " id="Gasto">
                                         <option selected value='0'> Seleccione Gasto </option>
                                         @foreach (var item in Model.Gastos)
                                         {
@@ -128,7 +128,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Moneda</label>
-                                    <select asp-for="Objeto.Moneda" class="form-control" id="selectMoneda">
+                                    <select disabled asp-for="Objeto.Moneda" class="form-control" id="selectMoneda">
                                         <option value="USD" selected>USD</option>
                                         <option value="CRC">CRC</option>
 
@@ -142,7 +142,7 @@
                                 <div class="form-group">
                                     <h5>Monto<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="number" asp-for="Objeto.Monto" id="Monto" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                        <input disabled type="number" asp-for="Objeto.Monto" id="Monto" class="form-control" required data-validation-required-message="Este campo es requerido">
                                     </div>
 
                                 </div>
@@ -283,3 +283,139 @@
 
     </div>
 </section>
+
+<!--Programacion del modal-->
+
+<div class="modal fade bd-example-modal-lg" id="ModalInclusion" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Agregar Factura</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row">
+                    <div class="col-12" style="text-align: center;">
+                        <div class="form-group">
+                            <center>
+                                <img id="imgPrincipalG" src="~/adjunto.png" alt="image" style="width:200px; height:200px;border-radius: 15px;" class="img-fluid" />
+                                <br />
+                                <br />
+
+                                <label style="font-size: 13px;" class="label" for="imgPrincipalUploadG">Subir Imagen</label><input id="imgPrincipalUploadG" accept=".jpg, .png" style="opacity:0; display:none;" type="file" name="imgPrincipalUploadG" />
+
+                                <input type="text" id="Imagen" hidden class="form-control" required data-validation-required-message="Este campo es requerido">
+
+
+                            </center>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+           
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h5>Cédula Proveedor<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text" id="CodProveedor"  class="form-control" required data-validation-required-message="Este campo es requerido">
+                             
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <h5>Nombre Proveedor<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text" id="NomProveedor" class="form-control" required data-validation-required-message="Este campo es requerido">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <h5>Número de Factura<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="number" id="NumFactura" class="form-control" required data-validation-required-message="Este campo es requerido">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Fecha Factura</label>
+                            <input type="date" class="form-control" id="FecFactura" onchange="javascript: onChangeFecFactura();">
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <h5>Monto<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="number" id="PrecUni" class="form-control" required data-validation-required-message="Este campo es requerido">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <h5>Comentarios<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text"  id="ComentarioFactura" class="form-control" required data-validation-required-message="Este campo es requerido">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+          
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Cancelar</button> &nbsp;
+                <button id="buttonSpin" type="button" class="btn btn-primary waves-effect text-left" onclick="javascript: AgregarFacturaTabla();">
+                    <span>Agregar</span>
+                    <span class="spinner"></span>
+                </button> &nbsp;
+                <span hidden class="loader" id="spinloader"></span>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<!--Modal-->
