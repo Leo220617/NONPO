@@ -8,7 +8,28 @@ $(document).ready(function () {
 
 
     $(document).ready(function () {
+        $('#pdf-upload').on('change', function (event) {
+            var fileInput = $(this)[0];
+            if (fileInput.files.length === 0) {
+                alert('Por favor, seleccione un archivo PDF.');
+                return;
+            }
 
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var base64 = e.target.result.split(',')[1];
+                PDFBASE = base64;
+            };
+
+            reader.onerror = function (e) {
+                console.error('Error leyendo el archivo', e);
+                alert('Hubo un error al leer el archivo.');
+            };
+
+            reader.readAsDataURL(file);
+        });
     });
 
 
@@ -16,7 +37,7 @@ $(document).ready(function () {
 
 var ProdCadena = [];
 var total = 0;
-
+var PDFBASE = "";
 function Generar() {
     try {
         var Solicitud = {
@@ -31,7 +52,8 @@ function Generar() {
             Moneda: $("#selectMoneda").val(),
             BaseEntry: 0,
             Comentarios: $("#inputComentarios").val(),
-            idUsuarioAprobador: 0
+            idUsuarioAprobador: 0,
+            Facturas: ProdCadena
 
 
 
@@ -310,7 +332,7 @@ function RellenaTabla() {
 
             sOptions += '<td align="center" style="padding-top:13px;">    <a style="margin-left: -1%; position: inherit !important;" onclick = "javascript: EliminarProducto(' + i + ')" title="Eliminar" class="fa fa-trash icono"></a> ';
          
-            sOptions += '<td align="center" style="padding-top:15px;">  <a style="font-size:13px; color: blue; text-decoration: underline;" onclick="javascript: AbrirModalEdicion(' + ProdCadena[i].NumFactura + ')">' + ProdCadena[i].NumFactura + '</a></td>';
+            sOptions += '<td align="center" style="padding-top:15px;">  <a style="font-size:13px; color: blue; text-decoration: underline;" onclick="javascript: AbrirModalEdicion(' + i+ ')">' + ProdCadena[i].NumFactura + '</a></td>';
             sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;">' + ProdCadena[i].Fecha + '</p></td>';
             sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;">' + ProdCadena[i].CedulaProveedor + " - " + ProdCadena[i].NomProveedor + '</p></td>';
             sOptions += '<td align="right" style="padding-top:13px;">  <p style="font-size:13px;">' + formatoDecimal(ProdCadena[i].Monto) + '</p></td>';
@@ -363,7 +385,8 @@ function AgregarFacturaTabla() {
             NumFactura: $("#NumFactura").val(),
             Comentarios: $("#ComentarioFactura").val(),
             Fecha: $("#FecFactura").val(),
-            Monto: parseFloat($("#PrecUni").val())
+            Monto: parseFloat($("#PrecUni").val()),
+            PDF: PDFBASE
         };
 
         if (Factura.CedulaProveedor == "" || Factura.CedulaProveedor == undefined || Factura.CedulaProveedor == null) {
@@ -454,6 +477,45 @@ function EliminarProducto(i) {
             icon: 'error',
             title: 'Oops...',
             text: 'Error ' + e
+
+        })
+    }
+
+}
+
+function AbrirModalE() {
+    try {
+        $("#ModalEdicion").modal("show");
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+    }
+
+}
+
+function AbrirModalEdicion(i) {
+    try {
+        var factura = ProdCadena[i];
+        if (factura != undefined) {
+
+            $("#CodProveedorE").val(factura.CedulaProveedor);
+            $("#NomProveedorE").val(factura.NomProveedor);
+            $("#NumFacturaE").val(factura.NumFactura);
+            $("#FecFacturaE").val(factura.Fecha);
+            $("#PrecUniE").val(factura.Monto);
+            $("#ComentarioFacturaE").val(factura.Comentarios);
+            AbrirModalE();
+        }
+
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
 
         })
     }

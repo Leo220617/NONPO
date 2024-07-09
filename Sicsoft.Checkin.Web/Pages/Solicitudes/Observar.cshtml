@@ -122,6 +122,12 @@
 
 
         function Rechazar() {
+
+            var Solicitud = {
+                id: $("#id").val(),
+                ComentariosAprobador: $("#inputComentariosA").val()
+
+            };
             Swal.fire({
                 title: '¿Desea rechazar esta solicitud?',
                 showDenyButton: true,
@@ -135,10 +141,11 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
 
                         url: '@Url.Page("Observar", "Rechazar")',
-                
+                        dataType: 'json',
+                        data: { enviados: Solicitud },
                         headers: {
                             RequestVerificationToken: $('input:hidden[name="__RequestVerificationToken"]').val()
                         },
@@ -196,6 +203,11 @@
 
         }
         function Aprobar() {
+            var Solicitud = {
+                id: $("#id").val(),
+                ComentariosAprobador: $("#inputComentariosA").val()
+
+            };
             Swal.fire({
                 title: '¿Desea aprobar esta solicitud?',
                 showDenyButton: true,
@@ -209,10 +221,11 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
 
                         url: '@Url.Page("Observar", "Aprobar")',
-
+                        dataType: 'json',
+                        data: { enviados: Solicitud },
                         headers: {
                             RequestVerificationToken: $('input:hidden[name="__RequestVerificationToken"]').val()
                         },
@@ -270,86 +283,7 @@
 
         }
     </script>
-    <script>
-        var ImageBae64 = '';
-
-        var fileUploadPrincipal = document.getElementById('imgPrincipalUploadG');
-        fileUploadPrincipal.onchange = async function (e) {
-
-            await readFilePrincipalP(e.srcElement);
-            // idF = setInterval(cancelar(e), 2000);
-
-            var idF = setInterval(async function () {
-
-                if (ImageBae64 != "data:," && $("#base64").val() != "data:,") {
-                    //alert("Imagen agregada con éxito");
-                    clearInterval(idF);
-                } else {
-                    await readFilePrincipalP(e.srcElement);
-                }
-            }, 1500);
-
-
-
-        }
-        async function readFilePrincipalP(input) {
-
-            if (input.files && input.files[0]) {
-                /*const maxAllowSize = 512000;*/
-                //const maxAllowSize = 2800000;
-                const maxAllowSize = 5000000;
-                if (input.files[0].size > maxAllowSize) {
-                    alert("Esta imagen es muy pesada");
-                    input.value = '';
-                } else {
-                    var reader = new FileReader();
-                    var img = document.createElement("img");
-                    var canvas = document.createElement('canvas');
-
-                    reader.onload = function (e) {
-                        img.src = e.target.result;
-                        var ctx = canvas.getContext("2d");
-                        ctx.drawImage(img, 0, 0);
-
-                        var MAX_WIDTH = 800;
-                        var MAX_HEIGHT = 600;
-                        var width = img.width;
-                        var height = img.height;
-
-                        if (width > height) {
-                            if (width > MAX_WIDTH) {
-                                height *= MAX_WIDTH / width;
-                                width = MAX_WIDTH;
-                            }
-                        } else {
-                            if (height > MAX_HEIGHT) {
-                                width *= MAX_HEIGHT / height;
-                                height = MAX_HEIGHT;
-                            }
-                        }
-                        canvas.width = width;
-                        canvas.height = height;
-                        var ctx = canvas.getContext("2d");
-                        ctx.drawImage(img, 0, 0, width, height);
-                        var dataurl = canvas.toDataURL("image/jpg");
-                        document.getElementById('imgPrincipalG').src = e.target.result;
-
-                        ImageBae64 = dataurl;
-                        $("#Imagen").val(ImageBae64);
-                        //    IMG2 = e.target.result;
-
-                    }
-
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-
-
-
-        }
-
-    </script>
+ 
 }
 
     @using Newtonsoft.Json;
@@ -372,6 +306,7 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="row">
+                        <input hidden asp-for="Objeto.id" id="id" />
                         <div class="col-8">
                             <h6 class="box-subtitle">Observar Solicitud</h6>
 
@@ -390,25 +325,7 @@
                 <div class="box-body">
                     <!-- title row -->
                     <div class="row">
-                        <div class="col-12" style="text-align: center;">
-                            <div class="form-group">
-                                <center>
-                                    <img id="imgPrincipalG" disabled src="data:image/jpeg;base64, alt="image" style="width:200px; height:200px;border-radius: 15px;" class="img-fluid" />
-                                    <br />
-                                    <br />
-
-
-
-                                    <input type="text" id="Imagen" hidden class="form-control" required data-validation-required-message="Este campo es requerido">
-
-
-                                </center>
-                            </div>
-
-
-
-
-                        </div>
+                 
                     </div>
                     <div class="col-md-12">
                         <div class="page-header mt-0">
@@ -585,14 +502,29 @@
     </div>
     <div class="col-md-6">
 
+        @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") && 
+        Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null
+        && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
+        {
+            <div class="form-group">
+                <label>Comentarios Aprobador</label>
+                <textarea id="inputComentariosA" class="form-control" asp-for="@Model.Objeto.ComentariosAprobador"></textarea>
+
+            </div>
+        }else{
         <div class="form-group">
             <label>Comentarios Aprobador</label>
-            <textarea  id="inputComentarios" class="form-control"></textarea>
+                <textarea readonly id="inputComentariosA" asp-for="@Model.Objeto.ComentariosAprobador" class="form-control"></textarea>
 
         </div>
+        }
+      
 
     </div>
-    @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
+    @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") 
+    && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) 
+    && Model.Objeto.idUsuarioCreador != idUsuario
+    && Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null )
     {
     <button id="print" class="btn btn-danger" type="button" onclick="javascript: Rechazar()"> <span> Rechazar</span> </button>
     <button id="print" class="btn btn-success" type="button" onclick="javascript: Aprobar()"> <span> Aprobar</span> </button>

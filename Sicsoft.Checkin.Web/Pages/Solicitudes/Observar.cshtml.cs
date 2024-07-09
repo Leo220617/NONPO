@@ -84,7 +84,7 @@ namespace NONPO.Pages.Solicitudes
                 return Page();
             }
         }
-        public async Task<IActionResult> OnGetAprobar(SolicitudesViewModel enviados)
+        public async Task<IActionResult> OnPostAprobar(SolicitudesViewModel enviados)
         {
             try
             {
@@ -119,12 +119,13 @@ namespace NONPO.Pages.Solicitudes
                 return new JsonResult(obj);
             }
         }
-        public async Task<IActionResult> OnGetRechazar(SolicitudesViewModel enviados)
+        public async Task<IActionResult> OnPostRechazar(SolicitudesViewModel enviados)
         {
             try
             {
                 enviados.Status = "R";
                 enviados.idUsuarioAprobador = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
+               
                 await service.Editar(enviados);
                 var obj = new
                 {
@@ -135,12 +136,23 @@ namespace NONPO.Pages.Solicitudes
 
                 return new JsonResult(obj);
             }
+            catch (ApiException ex)
+            {
+                var obj = new
+                {
+                    success = false,
+                    mensaje = ex.Content.ToString()
+                };
+                return new JsonResult(obj);
+            }
             catch (Exception ex)
             {
-
-
-
-                return new JsonResult(ex.Message);
+                var obj = new
+                {
+                    success = false,
+                    mensaje = ex.Message
+                };
+                return new JsonResult(obj);
             }
         }
 

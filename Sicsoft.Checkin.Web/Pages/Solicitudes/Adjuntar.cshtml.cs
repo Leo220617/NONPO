@@ -65,7 +65,7 @@ namespace NONPO.Pages.Solicitudes
             try
             {
                 recibidos.idUsuarioCreador = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
-                recibidos.Status = "G";
+            
                 await service.Editar(recibidos);
                 var obj = new
                 {
@@ -101,7 +101,7 @@ namespace NONPO.Pages.Solicitudes
             try
             {
                 recibidos.idUsuarioCreador = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
-                recibidos.Status = "P";
+              
                 await service.Editar(recibidos);
                 var obj = new
                 {

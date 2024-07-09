@@ -15,6 +15,7 @@
     NumberFormatInfo formato2 = new CultureInfo("en-CR").NumberFormat;
     formato2.CurrencyGroupSeparator = ",";
     formato2.NumberDecimalSeparator = ".";
+    var idUsuario = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
 
 }
 
@@ -371,6 +372,11 @@
                                             }
                                             &nbsp;
                                             <a asp-page="./Observar" asp-route-id="@item.id" class="fa fa-info-circle icono"> </a> &nbsp;
+
+                                            @if ( item.Status == "A" && item.idUsuarioCreador == idUsuario)
+                                            {
+                                                <a asp-page="./Adjuntar" asp-route-id="@item.id" title="Adjuntar" class="fa  fa-paperclip icono"> </a>
+                                            }
                                       
                                         </td>
 

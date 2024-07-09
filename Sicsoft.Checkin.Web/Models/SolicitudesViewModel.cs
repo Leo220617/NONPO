@@ -16,6 +16,8 @@ namespace NONPO.Models
         public string Moneda { get; set; }
         public int BaseEntry { get; set; }
         public string Comentarios { get; set; }
+        public string ComentariosAprobador { get; set; }
+
 
         public int idUsuarioAprobador { get; set; }
         public FacturasViewModel[] Facturas { get; set; }
