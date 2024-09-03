@@ -8916,7 +8916,13 @@ C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\pages\widget-morris-charts.js
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\Paginas\Login\Login.js
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\sinPermiso.html
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\Solicitudes\AdjuntarSolicitud.js
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\Solicitudes\EditarSolicitud.js
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\Solicitudes\NuevoSolicitud.js
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\js\template.js
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\logoExcel.png
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\logoPDF.png
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\logoWord.png
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\WMS.png
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json

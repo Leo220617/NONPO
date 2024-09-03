@@ -447,3 +447,6 @@ C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.dll
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.pdb
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.genruntimeconfig.cache
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\Razor\Pages\Solicitudes\Adjuntar.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\Razor\Pages\Solicitudes\Editar.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\Razor\Pages\Rangos\Observar.cshtml.g.cs

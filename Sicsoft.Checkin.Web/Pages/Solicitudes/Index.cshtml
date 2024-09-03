@@ -198,7 +198,8 @@
 
                                 </div>
                             </div>
-
+                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "33").FirstOrDefault()))
+                            {
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="cyber">Usuarios:</label>
@@ -215,6 +216,7 @@
 
                                 </div>
                             </div>
+                            }
 
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -258,6 +260,17 @@
 
                                 <input type="checkbox" id="md_checkbox_4" class="chk-col-red" asp-for="filtro.rechazado" onclick="this.form.submit()" />
                                 <label for="md_checkbox_4">Rechazado</label>
+
+                                &nbsp;
+                                &nbsp;
+                                <input type="checkbox" id="md_checkbox_7" class="chk-col-red" asp-for="filtro.excedido" onclick="this.form.submit()" />
+                                <label for="md_checkbox_7">Excedido</label>
+
+                                &nbsp;
+                                &nbsp;
+
+                                <input type="checkbox" id="md_checkbox_8" class="chk-col-red" asp-for="filtro.listo" onclick="this.form.submit()" />
+                                <label for="md_checkbox_8">Espera Contabilización</label>
 
                                 &nbsp;
                                 &nbsp;
@@ -360,13 +373,23 @@
                                                         <td align="center" style="padding-top:15px;"><span class="badge badge-danger">Contabilizado</span></td>
                                                         break;
                                                     }
+                                                case "E":
+                                                    {
+                                                        <td align="center" style="padding-top:15px;"><span class="badge badge-warning">Excedido</span></td>
+                                                        break;
+                                                    }
+                                                case "L":
+                                                    {
+                                                        <td align="center" style="padding-top:15px;"><span class="badge badge-info">Espera de contabilización</span></td>
+                                                        break;
+                                                    }
                                             }
 
 
                                         }
 
                                         <td align="center" style="padding-top:15px;">
-                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "13").FirstOrDefault()) && item.Status == "P")
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "13").FirstOrDefault()) && item.Status == "P" && item.idUsuarioCreador == idUsuario)
                                             {
                                                 <a asp-page="./Editar" asp-route-id="@item.id" title="Editar" class="fa fa-edit icono"> </a>
                                             }
@@ -377,6 +400,18 @@
                                             {
                                                 <a asp-page="./Adjuntar" asp-route-id="@item.id" title="Adjuntar" class="fa  fa-paperclip icono"> </a>
                                             }
+                                            &nbsp;
+                                            
+
+                                                @if (!string.IsNullOrEmpty(Roles.Where(a => a == "32").FirstOrDefault()) && item.Status == "L")
+                                                {
+                                                  
+
+                                                        <a title="Crear asiento en SAP" class="icono" onclick="javascript: EnviarAsiento('@item.id')"><img src="~/img/sapX5.png" class="imgSAP" /></a>
+                                                    
+                                                }
+
+
                                       
                                         </td>
 

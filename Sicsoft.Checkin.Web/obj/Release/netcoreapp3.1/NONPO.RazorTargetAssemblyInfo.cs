@@ -17,7 +17,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyProductAttribute("NONPO")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de316c9111eeac1e000e59c59546e515411671b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f440fbc19e8012d7db172a7dddb6226180b9b89")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NONPO.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

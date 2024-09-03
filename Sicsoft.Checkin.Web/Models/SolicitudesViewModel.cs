@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NONPO.Models
 {
@@ -20,7 +21,12 @@ namespace NONPO.Models
 
 
         public int idUsuarioAprobador { get; set; }
+
+        public decimal TotalFacturas { get; set; }
+
         public FacturasViewModel[] Facturas { get; set; }
+
+        public List<LogsViewModel> Logs { get; set; }
     }
 }
     

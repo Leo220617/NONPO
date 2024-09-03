@@ -1,4 +1,5 @@
 ﻿@page "{id}"
+@using Newtonsoft.Json
 @model NONPO.Pages.Solicitudes.AdjuntarModel
 @{
     ViewData["Title"] = "Agregar Solicitudes";
@@ -88,6 +89,7 @@
         <div class="col-12">
             <input hidden id="urlGenerar" value="@Url.Page("Adjuntar", "AgregarSolicitud")" />
             <input hidden id="urlGenerarP" value="@Url.Page("Adjuntar", "AgregarSolicitudP")" />
+            <input hidden id="Solicitud" value="@JsonConvert.SerializeObject(Model.Objeto)" />
 
             <div class="box">
                 <div class="box-header with-border">
@@ -108,7 +110,7 @@
                     <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input hidden asp-for="Objeto.id" id="id" />
-
+                        <input hidden asp-for="Objeto.Facturas" id="Facturas" />
                         <div class="row">
 
                             <div class="col-md-4">
@@ -440,15 +442,10 @@
                     <div class="col-12" style="text-align: center;">
                         <div class="form-group">
                             <center>
-                                <img id="imgPrincipalG" src="~/adjunto.png" alt="image" style="width:200px; height:200px;border-radius: 15px;" class="img-fluid" />
-                                <br />
-                                <br />
-
-                                <label style="font-size: 13px;" class="label" for="imgPrincipalUploadGE">Subir Imagen</label><input id="imgPrincipalUploadG" accept=".jpg, .png" style="opacity:0; display:none;" type="file" name="imgPrincipalUploadG" />
-
-                                <input type="text" id="Imagen" hidden class="form-control" required data-validation-required-message="Este campo es requerido">
-
-
+                                <div class="container">
+                                    <label for="pdf-uploadE">Seleccione un archivo PDF:</label>
+                                    <input type="file" id="pdf-uploadE" name="pdf-uploadE" accept="application/pdf">
+                                </div>
                             </center>
                         </div>
 
@@ -503,7 +500,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Fecha Factura</label>
-                            <input type="date" class="form-control" id="FecFacturaE" onchange="javascript: onChangeFecFactura();">
+                            <input type="date" class="form-control" id="FecFacturaE">
 
 
                         </div>
@@ -545,7 +542,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Cancelar</button> &nbsp;
-                <button id="buttonSpin" type="button" class="btn btn-primary waves-effect text-left" onclick="javascript: AgregarFacturaTabla();">
+                <button id="buttonSpin" type="button" class="btn btn-primary waves-effect text-left" onclick="javascript: EditarFactura();">
                     <span>Agregar</span>
                     <span class="spinner"></span>
                 </button> &nbsp;

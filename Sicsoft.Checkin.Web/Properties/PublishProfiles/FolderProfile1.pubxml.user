@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
-    <History>True|2024-06-21T21:21:43.2204757Z;</History>
+    <History>True|2024-08-08T22:20:54.3648581Z;True|2024-07-10T16:48:05.0939505-06:00;True|2024-07-10T14:56:55.5138591-06:00;True|2024-07-10T14:54:49.2228825-06:00;True|2024-06-21T15:21:43.2204757-06:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

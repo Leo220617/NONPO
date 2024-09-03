@@ -230,7 +230,7 @@
                                             </a>
                                         </td>
                                         <td align="left" style="padding-top:15px;"><a style="font-size:15px;  "> @item.Nombre</a></td>
-                                        <td>@item.idTipoGasto</td>
+                                      
                                         <td>@((Model.Gastos.Where(a => a.idTipoGasto == item.idTipoGasto).FirstOrDefault() == null ? "" : Model.Gastos.Where(a => a.idTipoGasto == item.idTipoGasto).FirstOrDefault().Nombre))</td>
                                         <td>  @Math.Round(@item.MontoMinimo, 2).ToString("C", formato)</td>
                                         <td>  @Math.Round(@item.MontoMaximo, 2).ToString("C", formato)</td>
@@ -248,14 +248,18 @@
 
 
                                         <td align="center" style="padding-top:15px;">
-                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "13").FirstOrDefault()))
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "9").FirstOrDefault()))
                                             {
                                                 <a asp-page="./Editar" asp-route-id="@item.id" title="Editar" class="fa fa-edit icono"> </a>
                                             }
                                             &nbsp;
-                                            <a onclick="javascript: onClickModal('@item.id')" title="Activar/Desactivar" class="fa fa-trash icono"></a>
-                                             &nbsp;  
-                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "3").FirstOrDefault()))
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "34").FirstOrDefault()))
+                                            {
+                                                <a asp-page="./Observar" asp-route-id="@item.id" class="fa fa-info-circle icono"> </a>
+                                            }
+                                            &nbsp;
+                                       
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "25").FirstOrDefault()))
                                             {
                                                 <a asp-page="./RangosLogin" asp-route-id="@item.id" title="Asignar usuarios" class="fa fa-exchange icono" style="color: #FFB700;"> </a>
                                             }

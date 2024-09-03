@@ -10,6 +10,11 @@
     formato.NumberDecimalSeparator = ".";
     var idUsuario = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
 
+    NumberFormatInfo formato2 = new CultureInfo("en-CR").NumberFormat;
+    formato2.CurrencyGroupSeparator = ",";
+    formato2.NumberDecimalSeparator = ".";
+
+
 }
 @section styles {
     <style>
@@ -44,9 +49,9 @@
             padding: 8px 18px !important;
         }
         /*label
-                                                {
-                                                    font-size: 15px;
-                                                }*/
+                                                        {
+                                                            font-size: 15px;
+                                                        }*/
 
         #imgGalerias {
             display: none;
@@ -283,7 +288,7 @@
 
         }
     </script>
- 
+
 }
 
     @using Newtonsoft.Json;
@@ -325,7 +330,6 @@
                 <div class="box-body">
                     <!-- title row -->
                     <div class="row">
-                 
                     </div>
                     <div class="col-md-12">
                         <div class="page-header mt-0">
@@ -375,6 +379,11 @@
                                                             <td align="center" style="padding-top:15px;"><span class="badge badge-danger">Contabilizado</span></td>
                                                             break;
                                                         }
+                                                    case "L":
+                                                        {
+                                                            <td align="center" style="padding-top:15px;"><span class="badge badge-info">Espera de contabilización</span></td>
+                                                            break;
+                                                        }
                                                 }
 
 
@@ -392,7 +401,7 @@
                                         <h5> <b>Moneda: </b> @Model.Objeto.Moneda</h5>
 
                                     </div>
-                                
+
 
 
                                     <br />
@@ -489,6 +498,8 @@
                         </div>
                         <!-- /.col -->
                     </div>
+
+
                     <!-- /.row -->
 
 
@@ -496,41 +507,182 @@
             </div>
 
 
-            <!-- Default box -->
 
+
+
+            @if (Model.Objeto.Facturas.Length > 0)
+            {
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">
+
+                            <div class="col-md-4 invoice-col">
+
+                                <address>
+                                    <strong class="text-blue font-size-18"> Facturas</strong>
+
+
+                                </address>
+                            </div>
+
+                            <div class="col-12 table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="bg-pale-info">
+
+
+                                            <th class="text-center">Consecutivo Hacienda</th>
+                                            <th class="text-center">Fecha</th>
+                                            <th class="text-center">Proveedor</th>
+
+
+
+                                            <th class="text-center">Total</th>
+
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in Model.Objeto.Facturas)
+                                        {
+                                            <tr>
+                                                <td style="text-align: center">@item.NumFactura</td>
+                                                <td style="text-align: center">@item.Fecha.ToString("dd/MM/yyyy")</td>
+                                                <td style="text-align: center">@item.CedulaProveedor - @item.NomProveedor</td>
+
+                                                @if (Model.Objeto.Moneda == "USD")
+                                                {
+                                                    <td>  @Math.Round(@item.Monto, 2).ToString("C", formato)</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>  @Math.Round(@item.Monto, 2).ToString("C", formato2)</td>
+                                                }
+
+
+
+
+
+
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-12  text-right">
+
+
+                             
+                                <div class="total-payment">
+                                    @if(Model.Objeto.Moneda == "USD")
+                                    {
+                                        <h3><b>Total :</b>  <span>  @Math.Round(Model.Objeto.TotalFacturas, 2).ToString("C", formato)</span></h3>
+                                    }
+                                    else
+                                    {
+                                        <h3><b>Total :</b>  <span>  @Math.Round(Model.Objeto.TotalFacturas, 2).ToString("C", formato2)</span></h3>
+                                    }
+                                   
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </div>
+
+
+                    <!-- Default box -->
+
+                </div>
+            }
+            @{
+                if (!string.IsNullOrEmpty(Roles.Where(a => a == "31").FirstOrDefault()))
+                {
+                    <!-- Default box -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">Logs</h4>
+                        </div>
+                        <div class="box-body">
+                            <!-- Table row -->
+                            <div class="row">
+                                <div class="col-12 table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-pale-info">
+                                                <th class="text-center">Detalle</th>
+                                                <th class="text-center">Fecha</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Objeto.Logs)
+                                            {
+                                                <tr>
+                                                    <td>@item.Detalle</td>
+                                                    <td>@item.Fecha</td>
+
+                                                </tr>
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                }
+
+
+            }
         </div>
-    </div>
-    <div class="col-md-6">
 
-        @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") && 
-        Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null
-        && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
-        {
-            <div class="form-group">
-                <label>Comentarios Aprobador</label>
-                <textarea id="inputComentariosA" class="form-control" asp-for="@Model.Objeto.ComentariosAprobador"></textarea>
+        <div class="col-md-6">
 
-            </div>
-        }else{
-        <div class="form-group">
-            <label>Comentarios Aprobador</label>
-                <textarea readonly id="inputComentariosA" asp-for="@Model.Objeto.ComentariosAprobador" class="form-control"></textarea>
+            @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") &&
+            Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null
+            && !string.IsNullOrEmpty(Roles.Where(a => a == "21").FirstOrDefault()) && Model.Objeto.idUsuarioCreador != idUsuario)
+            {
+                <div class="form-group">
+                    <label>Comentarios Aprobador</label>
+                    <textarea id="inputComentariosA" class="form-control" asp-for="@Model.Objeto.ComentariosAprobador"></textarea>
 
-        </div>
-        }
-      
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label>Comentarios Aprobador</label>
+                    <textarea readonly id="inputComentariosA" asp-for="@Model.Objeto.ComentariosAprobador" class="form-control"></textarea>
 
-    </div>
-    @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S") 
-    && !string.IsNullOrEmpty(Roles.Where(a => a == "30").FirstOrDefault()) 
-    && Model.Objeto.idUsuarioCreador != idUsuario
-    && Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null )
-    {
-    <button id="print" class="btn btn-danger" type="button" onclick="javascript: Rechazar()"> <span> Rechazar</span> </button>
-    <button id="print" class="btn btn-success" type="button" onclick="javascript: Aprobar()"> <span> Aprobar</span> </button>
+                </div>
+            }
 
-    }
+
        
+        @if ((Model.Objeto.Status == "G" || Model.Objeto.Status == "S")
+        && !string.IsNullOrEmpty(Roles.Where(a => a == "21").FirstOrDefault())
+        && Model.Objeto.idUsuarioCreador != idUsuario
+        && Model.Aprobaciones.Where(a => a.idLogin == idUsuario).FirstOrDefault() == null)
+        {
+            <button id="print" class="btn btn-danger" type="button" onclick="javascript: Rechazar()"> <span> Rechazar</span> </button>
+            <button id="print" class="btn btn-success" type="button" onclick="javascript: Aprobar()"> <span> Aprobar</span> </button>
+
+        }
+        </div>
 </section>
 
 

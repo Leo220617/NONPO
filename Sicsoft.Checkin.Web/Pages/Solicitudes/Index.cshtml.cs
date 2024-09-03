@@ -54,7 +54,7 @@ namespace NONPO.Pages.Solicitudes
                 // filtro.Codigo1 = int.Parse(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault());
 
                 var Roles = ((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "Roles").Select(s1 => s1.Value).FirstOrDefault().Split("|");
-                if (string.IsNullOrEmpty(Roles.Where(a => a == "1").FirstOrDefault()))
+                if (string.IsNullOrEmpty(Roles.Where(a => a == "4").FirstOrDefault()))
                 {
                     return RedirectToPage("/NoPermiso");
                 }
@@ -84,7 +84,16 @@ namespace NONPO.Pages.Solicitudes
                     filtro.espera = true;
 
                 }
+                if (string.IsNullOrEmpty(Roles.Where(a => a == "33").FirstOrDefault()))
+                {
+                    filtro.Codigo2 = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
+                }
+                else
+                {
+
+                }
                 Objeto = await service.ObtenerLista(filtro);
+
 
                 return Page();
             }

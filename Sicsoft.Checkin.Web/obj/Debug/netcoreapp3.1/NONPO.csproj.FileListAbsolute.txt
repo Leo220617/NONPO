@@ -449,3 +449,4 @@ C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\ne
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Observar.cshtml.g.cs
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Editar.cshtml.g.cs
 C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Solicitudes\Adjuntar.cshtml.g.cs
+C:\Users\steve\Documents\Repositorios DYD\NONPO\Sicsoft.Checkin.Web\obj\Debug\netcoreapp3.1\Razor\Pages\Rangos\Observar.cshtml.g.cs
