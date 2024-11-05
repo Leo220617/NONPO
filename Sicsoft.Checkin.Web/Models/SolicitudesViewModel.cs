@@ -27,6 +27,8 @@ namespace NONPO.Models
         public FacturasViewModel[] Facturas { get; set; }
 
         public List<LogsViewModel> Logs { get; set; }
+
+        public List<AprobacionesViewModel> Aprobaciones { get; set; }
     }
 }
     

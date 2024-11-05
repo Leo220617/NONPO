@@ -30,7 +30,7 @@
 
                 </a>
             <li class="nav-devider"></li>
-            </li>
+            
             <li class="treeview">
 
                 <a href="#">
@@ -125,7 +125,7 @@
 
 
             <li class="">
-                @if (((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "CambiarClave").Select(s1 => s1.Value).FirstOrDefault() != "True")
+                @if (!string.IsNullOrEmpty(Roles.Where(a => a == "4").FirstOrDefault()))
                 {
 
                     <a asp-page="/Solicitudes/Index">
@@ -136,6 +136,36 @@
 
             </li>
 
+            <li class="nav-devider"></li>
+
+            <li class="treeview">
+
+                <a href="#">
+                    <i class="fa  fa-book"></i> <span>Reportes</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                        @if (((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "CambiarClave").Select(s1 => s1.Value).FirstOrDefault() != "True")
+                        {
+
+
+                          
+
+
+                            if (!string.IsNullOrEmpty(Roles.Where(a => a == "35").FirstOrDefault()))
+                            {
+
+                            <li><a asp-page="/Reportes/Index"><i class="fa  fa-bookmark"></i> &nbsp; Solicitudes</a></li>
+                            }
+
+
+
+
+                        }
+                </ul>
+            </li>
          
 
 
