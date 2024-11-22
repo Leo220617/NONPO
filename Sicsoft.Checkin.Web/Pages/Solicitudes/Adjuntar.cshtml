@@ -40,9 +40,9 @@
             padding: 8px 18px !important;
         }
         /*label
-                                                        {
-                                                            font-size: 15px;
-                                                        }*/
+                                                                        {
+                                                                            font-size: 15px;
+                                                                        }*/
 
         #imgGalerias {
             display: none;
@@ -61,7 +61,7 @@
         input[type="file"] {
             margin-bottom: 20px;
         }
-</style>
+    </style>
 }
 
 @section scripts {
@@ -90,6 +90,7 @@
             <input hidden id="urlGenerar" value="@Url.Page("Adjuntar", "AgregarSolicitud")" />
             <input hidden id="urlGenerarP" value="@Url.Page("Adjuntar", "AgregarSolicitudP")" />
             <input hidden id="Solicitud" value="@JsonConvert.SerializeObject(Model.Objeto)" />
+            <input hidden id="Proveedores" value="@JsonConvert.SerializeObject(Model.Proveedores.Proveedores)" />
 
             <div class="box">
                 <div class="box-header with-border">
@@ -325,29 +326,71 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-4">
+                       
+                    </div>
+                    <div class="col-md-6" style="text-align: right">
+                        <a asp-page="/RegistroProveedores/Nuevo" target="_blank" style="color: #57b846;" title="Agregar">
+                            <i class="fa fa-plus"></i> Solicitar creación proveedor
+                        </a>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <h5>Cédula Proveedor<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" id="CodProveedor" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                <input type="text" id="CodProveedor" list="proveedoresCR" onchange="javascript: onChangeProveedor(1);" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                <datalist id="proveedoresCR">
+                                    @foreach (var item in Model.Proveedores.Proveedores)
+                                    {
+                                        <option value="@item.Cedula"> @item.Cedula</option>
 
+                                    }
+
+
+
+                                </datalist>
                             </div>
 
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <h5>Nombre Proveedor<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" id="NomProveedor" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                <input type="text" maxlength="200" id="NomProveedor" onchange="javascript: onChangeProveedor(2);" class="form-control" list="proveedoresNomCR" required data-validation-required-message="Este campo es requerido">
+                                <datalist id="proveedoresNomCR">
+                                    @foreach (var item in Model.Proveedores.Proveedores)
+                                    {
+                                        <option value="@item.Nombre"> @item.Nombre</option>
 
+                                    }
+
+
+
+                                </datalist>
                             </div>
 
                         </div>
 
                     </div>
 
+                    <div class="col-md-6" hidden>
+                        <div class="form-group">
+                            <h5>CardCode<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text" id="CardCode" disabled class="form-control" required data-validation-required-message="Este campo es requerido">
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
 
                 </div>

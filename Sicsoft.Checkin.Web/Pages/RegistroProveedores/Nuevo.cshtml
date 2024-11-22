@@ -1,0 +1,294 @@
+﻿@page
+@model NONPO.Pages.RegistroProveedores.NuevoModel
+@{
+    ViewData["Title"] = "Proveedores";
+}
+
+
+@section styles {
+
+
+}
+
+@section scripts {
+
+
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Proveedores
+    </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><i class="ti-dashboard"></i></a></li>
+        <li class="breadcrumb-item active">Crear Nuevo Proveedor</li>
+    </ol>
+</section>
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="box-subtitle"> Crear Nuevo Proveedor</h6>
+
+                        </div>
+                        <div class="col-4">
+                            <a asp-page="./Index" class="nav-link text-dark" style="text-decoration: underline;"><i class="ti-back-left "></i>  Regresar</a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form method="post" id="formTipos" role="form" novalidate class="needs-validation " enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    
+                                    <label for="cyber">Tipo de Cédula:</label>
+
+                                    <select id="selectTP" class="form-control" asp-for="Objeto.TipoCedula" required>
+                                
+                                            <option value="01">Nacional</option>
+                                            <option value="02">Jurídica</option>
+                                            <option value="03">DIMEX</option>
+                                            <option value="04">NITE</option>
+
+                                       
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Cédula<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Cedula" asp-for="Objeto.Cedula" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Nombre<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.Nombre" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Nombre Comercial<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.NombreComercial" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Nombre Representante<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.Representante" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Teléfono<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.Telefono" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Teléfono 2<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.Telefono2" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Regimen<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" id="Nombre" asp-for="Objeto.Regimen" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Correo<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.Correo" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Condición de Pago<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.CondicionPago" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Moneda</label>
+                                    <select asp-for="Objeto.Moneda" class="form-control" id="selectMoneda">
+                                        <option value="USD" selected>USD</option>
+                                        <option value="CRC">CRC</option>
+
+
+                                    </select>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Titular Cuenta Bancaria <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.TitularCuenta" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Cédula Cuenta Bancaria<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.CedulaCuenta" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Banco<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.Banco" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>IBAN Colones<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.IBANCuentaC" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>IBAN Colones<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.IBANCuentaFC" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Cuenta Cliente en Colones<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.CuentaBancariaC" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Cuenta Cliente en Dolares<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.CuentaBancariaFC" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <h5>Tipo de producto o servicio (Detallado)<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="text" asp-for="Objeto.Detallado" class="form-control" required data-validation-required-message="Este campo es requerido">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                 
+
+                        <br />
+
+
+
+
+                        <div class="text-xs-right">
+                            <button type="submit" class="btn btn-info" title="Guardar Cambios">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

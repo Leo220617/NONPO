@@ -40,6 +40,10 @@ namespace Sicsoft.Checkin.Web.Servicios
         [Get("")]
         Task<TEntity[]> ObtenerLista<TQuery>(TQuery q);
 
+
+        [Get("")]
+        Task<TEntity> ObtenerListaEspecial<TQuery>(TQuery q);
+
         [Get("")]
         Task<TEntity> ObtenerHeader<TQuery>(TQuery q);
 

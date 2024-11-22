@@ -21,6 +21,7 @@ namespace NONPO.Pages.Solicitudes
         private readonly ICrudApi<SolicitudesViewModel, int> service;
         private readonly ICrudApi<UsuariosViewModel, int> usuarios;
         private readonly ICrudApi<GastosViewModel, int> gastos;
+        private readonly ICrudApi<ProveedoresViewModel, int> proveedores;
 
         [BindProperty]
         public SolicitudesViewModel Objeto { get; set; }
@@ -29,11 +30,15 @@ namespace NONPO.Pages.Solicitudes
 
         [BindProperty]
         public GastosViewModel[] Gastos { get; set; }
-        public AdjuntarModel(ICrudApi<SolicitudesViewModel, int> service, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<GastosViewModel, int> gastos)
+
+        [BindProperty]
+        public ProveedoresViewModel Proveedores { get; set; }
+        public AdjuntarModel(ICrudApi<SolicitudesViewModel, int> service, ICrudApi<ProveedoresViewModel, int> proveedores, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<GastosViewModel, int> gastos)
         {
             this.service = service;
             this.usuarios = usuarios;
             this.gastos = gastos;
+            this.proveedores = proveedores;
         }
 
         public async Task<IActionResult> OnGetAsync(int id)
@@ -49,6 +54,7 @@ namespace NONPO.Pages.Solicitudes
                 Objeto = await service.ObtenerPorId(id);
                 Usuarios = await usuarios.ObtenerLista("");
                 Gastos = await gastos.ObtenerLista("");
+                Proveedores = await proveedores.ObtenerListaEspecial("");
 
                 return Page();
             }

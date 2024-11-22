@@ -160,6 +160,14 @@ namespace Sicsoft.Checkin.Web.Servicios
         }
 
         /// <inheritdoc />
+        Task<TEntity> ICrudApi<TEntity, TKey>.ObtenerListaEspecial<TQuery>(TQuery q)
+        {
+            var arguments = new object[] { q };
+            var func = requestBuilder.BuildRestResultFuncForMethod("ObtenerListaEspecial", new Type[] { typeof(TQuery) }, new Type[] { typeof(TQuery) });
+            return (Task<TEntity>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
         Task<TEntity> ICrudApi<TEntity, TKey>.ObtenerHeader<TQuery>(TQuery q)
         {
             var arguments = new object[] { q };

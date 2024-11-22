@@ -40,12 +40,14 @@ var ProdCadena = [];
 var PDFBASE = "";
 
 var Solicitud = [];
+var Proveedores = [];
 
 
 function Recuperar() {
     try {
         Solicitud = JSON.parse($("#Solicitud").val());
-      
+        Proveedores = JSON.parse($("#Proveedores").val());
+
         for (var i = 0; i < Solicitud.Facturas.length; i++) {
        
             var Factura =
@@ -55,6 +57,7 @@ function Recuperar() {
                 NomProveedor: Solicitud.Facturas[i].NomProveedor,
                 NumFactura: Solicitud.Facturas[i].NumFactura,
                 Comentarios: Solicitud.Facturas[i].Comentarios,
+                CardCode: Solicitud.Facturas[i].CardCode,
                 Fecha: Solicitud.Facturas[i].Fecha.substr(0, 4) + "-" + Solicitud.Facturas[i].Fecha.substr(5, 2) + "-" + Solicitud.Facturas[i].Fecha.substr(8, 2),
                 Monto: parseFloat(Solicitud.Facturas[i].Monto),
                 PDF: Solicitud.Facturas[i].PDF
@@ -65,8 +68,46 @@ function Recuperar() {
 
 
             ProdCadena.push(Factura);
-   
+        
             RellenaTabla();
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar agregar ' + e
+
+        })
+    }
+}
+
+
+function onChangeProveedor(bit) {
+    try {
+        if (bit == 2) {
+
+            $("#CodProveedor").val("");
+
+
+        } else {
+            $("#NomProveedor").val("");
+        }
+        var idProveedor = $("#CodProveedor").val();
+        var Nombre = $("#NomProveedor").val();
+
+       
+
+        var Proveedor = Proveedores.find(a => a.Nombre == Nombre || a.Cedula == idProveedor);
+
+
+        if (Proveedor != undefined) {
+            $("#NomProveedor").val(Proveedor.Nombre);
+            $("#CodProveedor").val(Proveedor.Cedula);
+            $("#CardCode").val(Proveedor.CardCode);
+        } else {
+            $("#NomProveedor").val("");
+            $("#CodProveedor").val("");
+            $("#CardCode").val("");
         }
     } catch (e) {
         Swal.fire({
@@ -430,6 +471,7 @@ function AgregarFacturaTabla() {
             Comentarios: $("#ComentarioFactura").val(),
             Fecha: $("#FecFactura").val(),
             Monto: parseFloat($("#PrecUni").val()),
+            CardCode: $("#CardCode").val(),
             PDF: PDFBASE
         };
 
@@ -446,6 +488,15 @@ function AgregarFacturaTabla() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Ha ocurrido un error, por favor ingresa la Nombre del Provedor '
+
+            })
+        }
+
+        if (Factura.CardCode == "" || Factura.CardCode == undefined || Factura.CardCode == null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ha ocurrido un error, CardCode del Provedor invalido '
 
             })
         }
@@ -466,7 +517,8 @@ function AgregarFacturaTabla() {
 
             })
         }
-        if ((Factura.CedulaProveedor != "" && Factura.CedulaProveedor != undefined && Factura.CedulaProveedor != null) && (Factura.NomProveedor != "" && Factura.NomProveedor != undefined && Factura.NomProveedor != null) &&
+        if ((Factura.CedulaProveedor != "" && Factura.CedulaProveedor != undefined && Factura.CedulaProveedor != null) && (Factura.NomProveedor != "" && Factura.NomProveedor != undefined && Factura.NomProveedor != null) && 
+            (Factura.CardCode != "" && Factura.CardCode != undefined && Factura.CardCode != null) &&
             (Factura.NumFactura != "" && Factura.NumFactura != undefined && Factura.NumFactura != null) && (Factura.Monto != undefined && Factura.Monto != null && Factura.Monto > 0)) {
 
             ProdCadena.push(Factura);

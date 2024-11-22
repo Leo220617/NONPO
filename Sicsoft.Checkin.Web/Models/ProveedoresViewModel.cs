@@ -1,10 +1,17 @@
 ﻿namespace NONPO.Models
 {
+
     public class ProveedoresViewModel
     {
-        public int id { get; set; }
+        public Proveedores[] Proveedores { get; set; }
+    }
+
+    public class Proveedores
+    {
+        public string CardCode { get; set; }
         public string Nombre { get; set; }
-        public string RUC { get; set; }
-        public string DV { get; set; }
+        public string Cedula { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
     }
 }
