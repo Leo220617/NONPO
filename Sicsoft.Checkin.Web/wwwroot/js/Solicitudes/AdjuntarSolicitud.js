@@ -81,7 +81,124 @@ function Recuperar() {
     }
 }
 
+function onChangeProducto() {
+    try {
 
+        var button = document.getElementById("idBotonBuscar");
+        button.disabled = false;
+
+        $("#spinloader2").removeAttr('hidden');
+        button.disabled = true;
+
+
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: $("#urlBuscarFactura").val(),
+            data: { id: $("#idBusqueda").val() },
+            success: function (result) {
+
+                console.log(result);
+                $("#Existencia").text("");
+                if (result != null) {
+
+                    if (result.nomProveedor.length > 40) {
+                        $("#Proveedor").val(result.nomProveedor.substr(0, 40));
+                    } else {
+                        $("#Proveedor").val(result.nomProveedor);
+                    }
+                    $("#id").val(result.id);
+                    $("#CHacienda").val(result.consecutivoHacienda);
+                    $("#FechaFac").val(result.fecFactura.substr(8, 2) + "/" + result.fecFactura.substr(5, 2) + "/" + result.fecFactura.substr(0, 4));
+
+
+                    $("#SubTotal").val(formatoDecimal(parseFloat(result.totalVenta)));
+
+                    $("#Impuesto").val(formatoDecimal(parseFloat(result.totalImpuesto)));
+                    $("#Descuento").val(formatoDecimal(parseFloat(result.totalDescuentos)));
+                    $("#tipoGasto").val(result.tipoGasto);
+
+
+                    $("#adjunto").attr('href', result.pdfFactura);
+
+                    $("#sub").val(result.totalVenta);
+                    $("#desc").val(result.totalDescuentos);
+                    $("#imp").val(result.totalImpuesto);
+
+
+                    $("#imp1").val(result.impuesto1);
+                    $("#imp2").val(result.impuesto2);
+                    $("#imp4").val(result.impuesto4);
+                    $("#imp8").val(result.impuesto8);
+                    $("#imp13").val(result.impuesto13);
+
+                    $("#otrosCargos").val(result.totalOtrosCargos);
+                    $("#TotalComp").val(formatoDecimal(result.totalComprobante));
+
+                    $("#idTipoGastoEditar").val(result.idTipoGasto).trigger('change.select2');
+                    var detalle = {
+                        id: $("#id").val(),
+                        Proveedor: $("#Proveedor").val(),
+                        CHacienda: $("#CHacienda").val(),
+                        Fecha: $("#FechaFac").val(),
+                        SubTotal: $("#sub").val(),
+                        Descuento: $("#desc").val(),
+                        Impuesto: $("#imp").val(),
+                        Total: 0,
+                        Impuesto1: $("#imp1").val(),
+                        Impuesto2: $("#imp2").val(),
+                        Impuesto4: $("#imp4").val(),
+                        Impuesto8: $("#imp8").val(),
+                        Impuesto13: $("#imp13").val(),
+                        TotalOtrosCargos: $("#otrosCargos").val()
+
+                    };
+                    $("#monedaFactura").val(result.codMoneda);
+                    console.log("Ya esta asignada: " + detalle);
+                    if (ProdCadena.find(a => a.id == parseInt(detalle.id)) != undefined) {
+                        var str = "Ya esta asignada";
+                        $("#Existencia").text(str);
+                        LimpiarDatos();
+
+                    }
+                    $("#spinloader2").attr("hidden", true);
+                    button.disabled = false;
+
+                } else {
+
+                    var str = "La Factura: No ha llegado al correo, No existe, No es de este periodo o Ya está asignada. Puedes intentar colocando más dígitos del consecutivo de hacienda o esperar unos minutos mientras llega.";
+                    $("#Existencia").text(str);
+                    LimpiarDatos();
+                    $("#spinloader2").attr("hidden", true);
+                    button.disabled = false;
+
+
+                }
+                button.disabled = false;
+
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function () {
+
+            }
+        });
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+        $("#spinloader2").attr("hidden", true);
+        button.disabled = false;
+    }
+
+
+
+}
 function onChangeProveedor(bit) {
     try {
         if (bit == 2) {

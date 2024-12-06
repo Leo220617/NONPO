@@ -41,6 +41,9 @@ namespace Sicsoft.Checkin.Web.Servicios
         Task<TEntity[]> ObtenerLista<TQuery>(TQuery q);
 
 
+        [Get("/Reenvio")]
+        Task Reenvio(string code, string correos);
+
         [Get("")]
         Task<TEntity> ObtenerListaEspecial<TQuery>(TQuery q);
 

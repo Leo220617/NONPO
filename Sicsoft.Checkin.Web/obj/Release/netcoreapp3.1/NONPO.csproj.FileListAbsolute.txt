@@ -903,3 +903,5 @@ C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\o
 C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.dll
 C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.pdb
 C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\NONPO.genruntimeconfig.cache
+C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\Razor\Pages\RegistroProveedores\Index.cshtml.g.cs
+C:\Users\Steven Rodriguez\Documents\Repositorios D&D\NONPO\Sicsoft.Checkin.Web\obj\Release\netcoreapp3.1\Razor\Pages\RegistroProveedores\Nuevo.cshtml.g.cs

@@ -160,6 +160,14 @@ namespace Sicsoft.Checkin.Web.Servicios
         }
 
         /// <inheritdoc />
+        Task ICrudApi<TEntity, TKey>.Reenvio(string code, string correos)
+        {
+            var arguments = new object[] { code, correos };
+            var func = requestBuilder.BuildRestResultFuncForMethod("Reenvio", new Type[] { typeof(string), typeof(string) });
+            return (Task)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
         Task<TEntity> ICrudApi<TEntity, TKey>.ObtenerListaEspecial<TQuery>(TQuery q)
         {
             var arguments = new object[] { q };

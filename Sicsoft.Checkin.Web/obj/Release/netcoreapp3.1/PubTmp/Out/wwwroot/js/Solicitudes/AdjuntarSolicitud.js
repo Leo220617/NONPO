@@ -40,12 +40,14 @@ var ProdCadena = [];
 var PDFBASE = "";
 
 var Solicitud = [];
+var Proveedores = [];
 
 
 function Recuperar() {
     try {
         Solicitud = JSON.parse($("#Solicitud").val());
-      
+        Proveedores = JSON.parse($("#Proveedores").val());
+
         for (var i = 0; i < Solicitud.Facturas.length; i++) {
        
             var Factura =
@@ -55,6 +57,7 @@ function Recuperar() {
                 NomProveedor: Solicitud.Facturas[i].NomProveedor,
                 NumFactura: Solicitud.Facturas[i].NumFactura,
                 Comentarios: Solicitud.Facturas[i].Comentarios,
+                CardCode: Solicitud.Facturas[i].CardCode,
                 Fecha: Solicitud.Facturas[i].Fecha.substr(0, 4) + "-" + Solicitud.Facturas[i].Fecha.substr(5, 2) + "-" + Solicitud.Facturas[i].Fecha.substr(8, 2),
                 Monto: parseFloat(Solicitud.Facturas[i].Monto),
                 PDF: Solicitud.Facturas[i].PDF
@@ -65,8 +68,163 @@ function Recuperar() {
 
 
             ProdCadena.push(Factura);
-   
+        
             RellenaTabla();
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar agregar ' + e
+
+        })
+    }
+}
+
+function onChangeProducto() {
+    try {
+
+        var button = document.getElementById("idBotonBuscar");
+        button.disabled = false;
+
+        $("#spinloader2").removeAttr('hidden');
+        button.disabled = true;
+
+
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: $("#urlBuscarFactura").val(),
+            data: { id: $("#idBusqueda").val() },
+            success: function (result) {
+
+                console.log(result);
+                $("#Existencia").text("");
+                if (result != null) {
+
+                    if (result.nomProveedor.length > 40) {
+                        $("#Proveedor").val(result.nomProveedor.substr(0, 40));
+                    } else {
+                        $("#Proveedor").val(result.nomProveedor);
+                    }
+                    $("#id").val(result.id);
+                    $("#CHacienda").val(result.consecutivoHacienda);
+                    $("#FechaFac").val(result.fecFactura.substr(8, 2) + "/" + result.fecFactura.substr(5, 2) + "/" + result.fecFactura.substr(0, 4));
+
+
+                    $("#SubTotal").val(formatoDecimal(parseFloat(result.totalVenta)));
+
+                    $("#Impuesto").val(formatoDecimal(parseFloat(result.totalImpuesto)));
+                    $("#Descuento").val(formatoDecimal(parseFloat(result.totalDescuentos)));
+                    $("#tipoGasto").val(result.tipoGasto);
+
+
+                    $("#adjunto").attr('href', result.pdfFactura);
+
+                    $("#sub").val(result.totalVenta);
+                    $("#desc").val(result.totalDescuentos);
+                    $("#imp").val(result.totalImpuesto);
+
+
+                    $("#imp1").val(result.impuesto1);
+                    $("#imp2").val(result.impuesto2);
+                    $("#imp4").val(result.impuesto4);
+                    $("#imp8").val(result.impuesto8);
+                    $("#imp13").val(result.impuesto13);
+
+                    $("#otrosCargos").val(result.totalOtrosCargos);
+                    $("#TotalComp").val(formatoDecimal(result.totalComprobante));
+
+                    $("#idTipoGastoEditar").val(result.idTipoGasto).trigger('change.select2');
+                    var detalle = {
+                        id: $("#id").val(),
+                        Proveedor: $("#Proveedor").val(),
+                        CHacienda: $("#CHacienda").val(),
+                        Fecha: $("#FechaFac").val(),
+                        SubTotal: $("#sub").val(),
+                        Descuento: $("#desc").val(),
+                        Impuesto: $("#imp").val(),
+                        Total: 0,
+                        Impuesto1: $("#imp1").val(),
+                        Impuesto2: $("#imp2").val(),
+                        Impuesto4: $("#imp4").val(),
+                        Impuesto8: $("#imp8").val(),
+                        Impuesto13: $("#imp13").val(),
+                        TotalOtrosCargos: $("#otrosCargos").val()
+
+                    };
+                    $("#monedaFactura").val(result.codMoneda);
+                    console.log("Ya esta asignada: " + detalle);
+                    if (ProdCadena.find(a => a.id == parseInt(detalle.id)) != undefined) {
+                        var str = "Ya esta asignada";
+                        $("#Existencia").text(str);
+                        LimpiarDatos();
+
+                    }
+                    $("#spinloader2").attr("hidden", true);
+                    button.disabled = false;
+
+                } else {
+
+                    var str = "La Factura: No ha llegado al correo, No existe, No es de este periodo o Ya está asignada. Puedes intentar colocando más dígitos del consecutivo de hacienda o esperar unos minutos mientras llega.";
+                    $("#Existencia").text(str);
+                    LimpiarDatos();
+                    $("#spinloader2").attr("hidden", true);
+                    button.disabled = false;
+
+
+                }
+                button.disabled = false;
+
+
+            },
+            beforeSend: function () {
+
+            },
+            complete: function () {
+
+            }
+        });
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+        $("#spinloader2").attr("hidden", true);
+        button.disabled = false;
+    }
+
+
+
+}
+function onChangeProveedor(bit) {
+    try {
+        if (bit == 2) {
+
+            $("#CodProveedor").val("");
+
+
+        } else {
+            $("#NomProveedor").val("");
+        }
+        var idProveedor = $("#CodProveedor").val();
+        var Nombre = $("#NomProveedor").val();
+
+       
+
+        var Proveedor = Proveedores.find(a => a.Nombre == Nombre || a.Cedula == idProveedor);
+
+
+        if (Proveedor != undefined) {
+            $("#NomProveedor").val(Proveedor.Nombre);
+            $("#CodProveedor").val(Proveedor.Cedula);
+            $("#CardCode").val(Proveedor.CardCode);
+        } else {
+            $("#NomProveedor").val("");
+            $("#CodProveedor").val("");
+            $("#CardCode").val("");
         }
     } catch (e) {
         Swal.fire({
@@ -430,6 +588,7 @@ function AgregarFacturaTabla() {
             Comentarios: $("#ComentarioFactura").val(),
             Fecha: $("#FecFactura").val(),
             Monto: parseFloat($("#PrecUni").val()),
+            CardCode: $("#CardCode").val(),
             PDF: PDFBASE
         };
 
@@ -446,6 +605,15 @@ function AgregarFacturaTabla() {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Ha ocurrido un error, por favor ingresa la Nombre del Provedor '
+
+            })
+        }
+
+        if (Factura.CardCode == "" || Factura.CardCode == undefined || Factura.CardCode == null) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ha ocurrido un error, CardCode del Provedor invalido '
 
             })
         }
@@ -466,7 +634,8 @@ function AgregarFacturaTabla() {
 
             })
         }
-        if ((Factura.CedulaProveedor != "" && Factura.CedulaProveedor != undefined && Factura.CedulaProveedor != null) && (Factura.NomProveedor != "" && Factura.NomProveedor != undefined && Factura.NomProveedor != null) &&
+        if ((Factura.CedulaProveedor != "" && Factura.CedulaProveedor != undefined && Factura.CedulaProveedor != null) && (Factura.NomProveedor != "" && Factura.NomProveedor != undefined && Factura.NomProveedor != null) && 
+            (Factura.CardCode != "" && Factura.CardCode != undefined && Factura.CardCode != null) &&
             (Factura.NumFactura != "" && Factura.NumFactura != undefined && Factura.NumFactura != null) && (Factura.Monto != undefined && Factura.Monto != null && Factura.Monto > 0)) {
 
             ProdCadena.push(Factura);

@@ -28,7 +28,7 @@ namespace NONPO.Pages.RegistroProveedores
             try
             {
                 var Roles = ((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == "Roles").Select(s1 => s1.Value).FirstOrDefault().Split("|");
-                if (string.IsNullOrEmpty(Roles.Where(a => a == "12").FirstOrDefault()))
+                if (string.IsNullOrEmpty(Roles.Where(a => a == "37").FirstOrDefault()))
                 {
                     return RedirectToPage("/NoPermiso");
                 }

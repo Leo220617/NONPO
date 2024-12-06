@@ -22,9 +22,12 @@ namespace NONPO.Pages.Solicitudes
         private readonly ICrudApi<UsuariosViewModel, int> usuarios;
         private readonly ICrudApi<GastosViewModel, int> gastos;
         private readonly ICrudApi<ProveedoresViewModel, int> proveedores;
-
+        private readonly ICrudApi<ComprasViewModel, int> compras;
         [BindProperty]
         public SolicitudesViewModel Objeto { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public ComprasViewModel[] Compras { get; set; }
         [BindProperty]
         public UsuariosViewModel[] Usuarios { get; set; }
 
@@ -33,12 +36,13 @@ namespace NONPO.Pages.Solicitudes
 
         [BindProperty]
         public ProveedoresViewModel Proveedores { get; set; }
-        public AdjuntarModel(ICrudApi<SolicitudesViewModel, int> service, ICrudApi<ProveedoresViewModel, int> proveedores, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<GastosViewModel, int> gastos)
+        public AdjuntarModel(ICrudApi<SolicitudesViewModel, int> service, ICrudApi<ComprasViewModel, int> compras, ICrudApi<ProveedoresViewModel, int> proveedores, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<GastosViewModel, int> gastos)
         {
             this.service = service;
             this.usuarios = usuarios;
             this.gastos = gastos;
             this.proveedores = proveedores;
+            this.compras = compras;
         }
 
         public async Task<IActionResult> OnGetAsync(int id)
@@ -70,7 +74,7 @@ namespace NONPO.Pages.Solicitudes
         {
             try
             {
-              
+
                 recibidos.idUsuarioCreador = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
                 recibidos.Status = "L";
                 await service.Editar(recibidos);
@@ -108,7 +112,7 @@ namespace NONPO.Pages.Solicitudes
             try
             {
                 recibidos.idUsuarioCreador = Convert.ToInt32(((ClaimsIdentity)User.Identity).Claims.Where(d => d.Type == ClaimTypes.Actor).Select(s1 => s1.Value).FirstOrDefault().ToString());
-              
+
                 await service.Editar(recibidos);
                 var obj = new
                 {
@@ -136,6 +140,48 @@ namespace NONPO.Pages.Solicitudes
                     mensaje = ex.Message
                 };
                 return new JsonResult(obj);
+            }
+        }
+        //Buscador de Facturas Electronicas
+        public async Task<IActionResult> OnGetBuscar(string id)
+        {
+            try
+            {
+
+
+                //var ids = Convert.ToInt32(id);
+
+                ParametrosFiltros filt = new ParametrosFiltros();
+                filt.Texto = id;
+
+
+                filt.FechaInicio = DateTime.Now;
+                filt.FechaInicio = new DateTime(filt.FechaInicio.Year, filt.FechaInicio.Month, 1);
+
+                DateTime primerDia = new DateTime(filt.FechaInicio.Year, filt.FechaInicio.Month, 1);
+                DateTime ultimoDia = primerDia.AddMonths(1).AddDays(-1);
+
+                filt.FechaFinal = ultimoDia;
+
+
+
+                filt.Asignados = true;
+                filt.Codigo2 = 0;
+                var objetos = await compras.ObtenerLista(filt);
+
+                var objeto = objetos.Where(a => a.ClaveHacienda.ToString().Contains(filt.Texto.ToUpper()) || a.ConsecutivoHacienda.ToString().Contains(filt.Texto.ToUpper())
+                ).FirstOrDefault();
+
+
+
+                return new JsonResult(objeto);
+            }
+            catch (ApiException ex)
+            {
+                Errores error = JsonConvert.DeserializeObject<Errores>(ex.Content.ToString());
+
+
+                return new JsonResult(error);
             }
         }
     }

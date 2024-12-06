@@ -96,8 +96,48 @@
             //})
 
         }
-     
 
+        function Eliminar() {
+
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '@Url.Page("Index", "Reenviar")',
+                data: { code: codes, correos: correo },
+                success: function (result) {
+                    console.log(result);
+                    if (result == false) {
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ha ocurrido un error al intentar reenviar'
+
+                        })
+
+                    } else {
+                        Swal.fire({
+                            title: "Ha sido reenviado con éxito",
+
+                            icon: 'success',
+                            showCancelButton: false,
+                            customClass: {
+                                confirmButton: 'swalBtnColor',
+
+                            },
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                            }
+                        })
+                    }
+                },
+                beforeSend: function () {
+
+                }
+            })
+        }
 
     </script>
 
@@ -186,7 +226,7 @@
                                         <td align="center" style="padding-top:15px;">
 
 
-                                            <a onclick="javascript: onClickModal2('@item.id')" title="Reenviar" class="fa fa-send icono"></a>
+                                            <a onclick="javascript: onClickModal2('@item.id', '@Model.Parametro.FirstOrDefault().CorreoProveedores')" title="Reenviar" class="fa fa-send icono"></a>
 
                                         </td>
 
