@@ -184,9 +184,9 @@ namespace Sicsoft.Checkin.Web.Servicios
         }
 
         /// <inheritdoc />
-        Task<TEntity> ICrudApi<TEntity, TKey>.InsertarAsiento(int idCierre)
+        Task<TEntity> ICrudApi<TEntity, TKey>.InsertarAsiento(int idSolicitud)
         {
-            var arguments = new object[] { idCierre };
+            var arguments = new object[] { idSolicitud };
             var func = requestBuilder.BuildRestResultFuncForMethod("InsertarAsiento", new Type[] { typeof(int) });
             return (Task<TEntity>)func(Client, arguments);
         }

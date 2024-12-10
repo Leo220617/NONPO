@@ -58,13 +58,15 @@ function Recuperar() {
                 NumFactura: Solicitud.Facturas[i].NumFactura,
                 Comentarios: Solicitud.Facturas[i].Comentarios,
                 CardCode: Solicitud.Facturas[i].CardCode,
-                Fecha: Solicitud.Facturas[i].Fecha.substr(0, 4) + "-" + Solicitud.Facturas[i].Fecha.substr(5, 2) + "-" + Solicitud.Facturas[i].Fecha.substr(8, 2),
+                Fecha: Solicitud.Facturas[i].Fecha.substr(8, 2) + "/" + Solicitud.Facturas[i].Fecha.substr(5, 2) + "/" + Solicitud.Facturas[i].Fecha.substr(0, 4),
+
+
                 Monto: parseFloat(Solicitud.Facturas[i].Monto),
                 PDF: Solicitud.Facturas[i].PDF
             };
-        
-
-
+            var Gasto = $("#Gasto").val();
+   
+            $("#idTipoGastoEditar").val(Gasto).trigger('change.select2');
 
 
             ProdCadena.push(Factura);
@@ -95,7 +97,7 @@ function onChangeProducto() {
             type: 'GET',
             dataType: 'json',
             url: $("#urlBuscarFactura").val(),
-            data: { id: $("#idBusqueda").val() },
+            data: { idBusqueda: $("#idBusqueda").val() },
             success: function (result) {
 
                 console.log(result);
@@ -107,9 +109,21 @@ function onChangeProducto() {
                     } else {
                         $("#Proveedor").val(result.nomProveedor);
                     }
-                    $("#id").val(result.id);
+              /*      $("#id").val(result.id);*/
+                    $("#CedulaP").val(result.codProveedor);
                     $("#CHacienda").val(result.consecutivoHacienda);
                     $("#FechaFac").val(result.fecFactura.substr(8, 2) + "/" + result.fecFactura.substr(5, 2) + "/" + result.fecFactura.substr(0, 4));
+
+                    var idProveedor = $("#CedulaP").val();
+                    var Nombre = $("#Proveedor").val();
+                    var Proveedor = Proveedores.find(a => a.Nombre == Nombre || a.Cedula == idProveedor);
+
+
+                    if (Proveedor != undefined) {
+                        $("#CardCodeP").val(Proveedor.CardCode);
+                    } else {
+                        $("#CardCodeP").val("N/A")
+                    }
 
 
                     $("#SubTotal").val(formatoDecimal(parseFloat(result.totalVenta)));
@@ -135,7 +149,7 @@ function onChangeProducto() {
                     $("#otrosCargos").val(result.totalOtrosCargos);
                     $("#TotalComp").val(formatoDecimal(result.totalComprobante));
 
-                    $("#idTipoGastoEditar").val(result.idTipoGasto).trigger('change.select2');
+               /*     $("#idTipoGastoEditar").val(result.idTipoGasto).trigger('change.select2');*/
                     var detalle = {
                         id: $("#id").val(),
                         Proveedor: $("#Proveedor").val(),
@@ -497,7 +511,43 @@ function validar(e) {
     }
 }
 
+function LimpiarDatos() {
+    try {
+        $("#Proveedor").val("");
 
+        $("#monedaFactura").val("");
+        $("#CHacienda").val("");
+        $("#FechaFac").val("");
+
+        $("#TotalComp").val("");
+        $("#SubTotal").val("");
+
+        $("#Impuesto").val("");
+        $("#Descuento").val("");
+
+
+        $("#imp1").val(0);
+        $("#imp2").val(0);
+        $("#imp4").val(0);
+        $("#imp8").val(0);
+        $("#imp13").val(0);
+        $("#otrosCargos").val(0);
+        $("#idBusqueda").val("")
+        $("#adjunto").attr('href', '');
+        $("#tipoGasto").text("");
+        $("#CardCodeP").val("N/A");
+/*        $("#idTipoGastoEditar").val("NULL").trigger('change.select2');*/
+        $("#ComenFac").val("");
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+    }
+
+}
 function AbrirModal() {
     try {
         $("#ModalInclusion").modal("show");
@@ -530,9 +580,12 @@ function RellenaTabla() {
             sOptions += '<tr>';
 
             sOptions += '<td align="center" style="padding-top:13px;">    <a style="margin-left: -1%; position: inherit !important;" onclick = "javascript: EliminarProducto(' + i + ')" title="Eliminar" class="fa fa-trash icono"></a> ';
-
-            sOptions += '<td align="center" style="padding-top:15px;">  <a style="font-size:13px; color: blue; text-decoration: underline;" onclick="javascript: AbrirModalEdicion(' + i + ')">' + ProdCadena[i].NumFactura + '</a></td>';
-            sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;">' + ProdCadena[i].Fecha + '</p></td>';
+            if (ProdCadena[i].NumFactura.trim().length < 20) {
+                sOptions += '<td align="center" style="padding-top:15px;">  <a style="font-size:13px; color: blue; text-decoration: underline;" onclick="javascript: AbrirModalEdicion(' + i + ')">' + ProdCadena[i].NumFactura + '</a></td>';
+            } else {
+                sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;" >' + ProdCadena[i].NumFactura + '</p></td>';
+            }
+                sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;">' + ProdCadena[i].Fecha + '</p></td>';
             sOptions += '<td align="center" style="padding-top:15px;">  <p style="font-size:13px;">' + ProdCadena[i].CedulaProveedor + " - " + ProdCadena[i].NomProveedor + '</p></td>';
             sOptions += '<td align="right" style="padding-top:13px;">  <p style="font-size:13px;">' + formatoDecimal(ProdCadena[i].Monto) + '</p></td>';
 
@@ -575,7 +628,8 @@ function AgregarFacturaTabla() {
         var CodProveedor = $("#CodProveedor").val();
         var NomProveedor = $("#NomProveedor").val();
         var NumFactura = $("#NumFactura").val();
-        var FecFactura = $("#FecFactura").val();
+        var fecFacturaRaw = $("#FecFactura").val();
+        var FecFactura = fecFacturaRaw.substr(8, 2) + "/" + fecFacturaRaw.substr(5, 2) + "/" + fecFacturaRaw.substr(0, 4);
         var Monto = $("#PrecUni").val()
         var Comentarios = $("#ComentarioFactura").val();
 
@@ -586,7 +640,7 @@ function AgregarFacturaTabla() {
             NomProveedor: $("#NomProveedor").val(),
             NumFactura: $("#NumFactura").val(),
             Comentarios: $("#ComentarioFactura").val(),
-            Fecha: $("#FecFactura").val(),
+            Fecha: FecFactura,
             Monto: parseFloat($("#PrecUni").val()),
             CardCode: $("#CardCode").val(),
             PDF: PDFBASE
@@ -738,6 +792,8 @@ function EditarFactura() {
     try {
         var Consecutivo = $("#NumFacturaE").val();
         var Cedula = $("#CodProveedorE").val();
+        var fecFacturaRaw = $("#FecFacturaE").val();
+        var FecFactura = fecFacturaRaw.substr(8, 2) + "/" + fecFacturaRaw.substr(5, 2) + "/" + fecFacturaRaw.substr(0, 4);
         var i = ProdCadena.findIndex(a => a.NumFactura == Consecutivo && a.CedulaProveedor == Cedula);
         var factura = ProdCadena[i];
         if (factura != undefined) {
@@ -745,7 +801,7 @@ function EditarFactura() {
             ProdCadena[i].CedulaProveedor = $("#CodProveedorE").val();
             ProdCadena[i].NomProveedor = $("#NomProveedorE").val();
             ProdCadena[i].NumFactura = $("#NumFacturaE").val();
-            ProdCadena[i].Fecha = $("#FecFacturaE").val();
+            ProdCadena[i].Fecha = FecFactura;
             ProdCadena[i].Monto = parseFloat($("#PrecUniE").val()),
             ProdCadena[i].Comentarios = $("#ComentarioFacturaE").val();
        
@@ -762,4 +818,162 @@ function EditarFactura() {
 
         })
     }
+}
+function InsertarProductoTabla() {
+
+    try {
+        if (ValidarAntesTabla()) {
+            if (validarMoneda() && ValidarCardCode()) {
+
+
+
+                var detalle = {
+                    idSolicitud: $("#id").val(),
+                    NomProveedor: $("#Proveedor").val(),
+                    NumFactura: $("#CHacienda").val(),
+                    CedulaProveedor: $("#CedulaP").val(),
+                    Fecha: $("#FechaFac").val(),
+                    SubTotal: $("#sub").val(),
+                    Descuento: $("#desc").val(),
+                    Impuesto: $("#imp").val(),
+                    Monto: 0,
+                    Impuesto1: $("#imp1").val(),
+                    Impuesto2: $("#imp2").val(),
+                    Impuesto4: $("#imp4").val(),
+                    Impuesto8: $("#imp8").val(),
+                    Impuesto13: $("#imp13").val(),
+                    idTipoGasto: $("#idTipoGastoEditar").val(),
+                    TotalOtrosCargos: $("#otrosCargos").val(),
+                    Comentario: $("#ComenFac").val()
+
+
+                };
+
+
+
+                var subtotalT = 0;
+                var descuentoT = 0;
+                var impuestoT = 0;
+                var totalT = 0;
+                var oCargosT = 0;
+                subtotalT = parseFloat(detalle.SubTotal);
+                descuentoT = parseFloat(detalle.Descuento);
+                impuestoT = parseFloat(detalle.Impuesto);
+                oCargosT = parseFloat(detalle.TotalOtrosCargos);
+
+                detalle.Monto = (subtotalT - descuentoT) + impuestoT + oCargosT;
+                ProdCadena.push(detalle);
+                totalT = parseFloat(detalle.Total);
+   
+
+
+
+
+
+
+
+                LimpiarDatos();
+
+                RellenaTabla();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Pareciera que la moneda especificada no es la misma que la factura.'
+
+                });
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Pareciera que aún falta un campo por llenar'
+
+            });
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+    }
+
+
+
+}
+function ValidarAntesTabla() {
+
+    try {
+        if ($("#Proveedor").val() == "") {
+            return false;
+        } else if ($("#idTipoGastoEditar").val() == "0" || $("#idTipoGastoEditar").val() == null) {
+            return false;
+        } else if ($("#ComenFac").val() == "") {
+            return false;
+        } else if ($("#CardCodeP").val() == "N/A") {
+            return false; 
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El proveedor no esta ingresado en SAP, porfavor solicite la creación ' 
+
+            })
+        }
+
+        else {
+            return true;
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+    }
+
+
+}
+
+function ValidarCardCode() {
+
+    try {
+      if ($("#CardCodeP").val() == "N/A") {
+            return false;
+          
+        }
+
+        else {
+            return true;
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El proveedor no esta ingresado en SAP, porfavor solicite la creación '
+
+        })
+    }
+
+
+}
+function validarMoneda() {
+    try {
+        if ($("#selectMoneda").val() != $("#monedaFactura").val()) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    } catch (e) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ha ocurrido un error al intentar recuperar ' + e
+
+        })
+    }
+
 }

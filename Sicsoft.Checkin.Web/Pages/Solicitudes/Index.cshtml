@@ -45,13 +45,13 @@
 
         var ids = 0;
         var ids2 = 0;
-        function onClickModal(id) {
+        function onClickModal2(id) {
 
             ids = id;
 
 
             Swal.fire({
-                title: '¿Desea eliminar este rango?',
+                title: '¿Desea enviar a SAP esta solicitud?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: `Aceptar`,
@@ -64,36 +64,36 @@
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
 
-                    Eliminar();
+                    Enviar();
 
                 }
             })
 
 
         }
-        function Eliminar() {
+        function Enviar() {
 
 
             $.ajax({
                 type: 'GET',
                 dataType: 'json',
-                url: '@Url.Page("Index", "Eliminar")',
+                url: '@Url.Page("Index", "Enviar")',
                 data: { id: ids },
                 success: function (result) {
 
-                    if (result == false) {
+                    if (result.success == false) {
                         ids = 0;
                         // $("#Eliminar").hide();
                         // $("#Error").show();
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Ha ocurrido un error al intentar eliminar'
+                            text: 'Ha ocurrido un error al intentar enviar '+ result.error
 
                         })
                     } else {
                         Swal.fire({
-                            title: "Ha sido eliminado con éxito",
+                            title: "Ha sido sincronizado con éxito",
 
                             icon: 'success',
                             showCancelButton: false,
@@ -117,7 +117,78 @@
                 }
             })
         }
+                           function onClickModal(id) {
 
+                    ids = id;
+
+
+                            Swal.fire({
+                                        title: '¿Desea eliminar este rango?',
+                                showDenyButton: true,
+                                showCancelButton: false,
+                                confirmButtonText: `Aceptar`,
+                                denyButtonText: `Cancelar`,
+                                        customClass: {
+                                    confirmButton: 'swalBtnColor',
+                                    denyButton: 'swalDeny'
+                                },
+                            }).then((result) => {
+                                        /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+
+                                    Eliminar();
+
+                                        }
+                            })
+
+
+                        }
+                                function Eliminar() {
+
+
+                            $.ajax({
+                                type: 'GET',
+                                        dataType: 'json',
+                                url: '@Url.Page("Index", "Eliminar")',
+                                data: { id: ids },
+                                success: function (result) {
+
+                                            if (result == false) {
+                                        ids = 0;
+                                        // $("#Eliminar").hide();
+                                        // $("#Error").show();
+                                        Swal.fire({
+                                                    icon: 'error',
+                                            title: 'Oops...',
+                                            text: 'Ha ocurrido un error al intentar eliminar'
+
+                                        })
+                                            } else {
+                                        Swal.fire({
+                                            title: "Ha sido eliminado con éxito",
+
+                                            icon: 'success',
+                                            showCancelButton: false,
+                                            customClass: {
+                                                confirmButton: 'swalBtnColor',
+
+                                            },
+                                            confirmButtonText: 'OK'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                location.reload();
+                                            }
+                                        })
+                                    }
+                                },
+                                beforeSend: function () {
+
+                                },
+                                complete: function () {
+
+                                }
+                            })
+                        }
 
     </script>
 
@@ -200,22 +271,22 @@
                             </div>
                             @if (!string.IsNullOrEmpty(Roles.Where(a => a == "33").FirstOrDefault()))
                             {
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="cyber">Usuarios:</label>
-                                    <select class="form-control select2" id="Usuario" asp-for="filtro.Codigo2" required>
-                                        <option value="0"> Seleccione</option>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="cyber">Usuarios:</label>
+                                        <select class="form-control select2" id="Usuario" asp-for="filtro.Codigo2" required>
+                                            <option value="0"> Seleccione</option>
 
-                                        @foreach (var item in Model.Usuarios)
-                                        {
-                                            <option value="@item.id">@item.Nombre</option>
-                                        }
+                                            @foreach (var item in Model.Usuarios)
+                                            {
+                                                <option value="@item.id">@item.Nombre</option>
+                                            }
 
 
-                                    </select>
+                                        </select>
 
+                                    </div>
                                 </div>
-                            </div>
                             }
 
                             <div class="col-md-3">
@@ -330,13 +401,15 @@
                                         <td>
                                             @item.Fecha.ToString("dd/MM/yyyy")
                                         </td>
-                                        @if(item.Moneda == "USD")
+                                        @if (item.Moneda == "USD")
                                         {
                                             <td>  @Math.Round(@item.Monto, 2).ToString("C", formato)</td>
-                                        }else{
+                                        }
+                                        else
+                                        {
                                             <td>  @Math.Round(@item.Monto, 2).ToString("C", formato2)</td>
                                         }
-                                       
+
                                         <td>@item.Moneda</td>
 
                                         @{
@@ -367,7 +440,7 @@
                                                         <td align="center" style="padding-top:15px;"><span class="badge badge-warning">Rechazado</span></td>
                                                         break;
                                                     }
-                                            
+
                                                 case "C":
                                                     {
                                                         <td align="center" style="padding-top:15px;"><span class="badge badge-danger">Contabilizado</span></td>
@@ -396,23 +469,23 @@
                                             &nbsp;
                                             <a asp-page="./Observar" asp-route-id="@item.id" class="fa fa-info-circle icono"> </a> &nbsp;
 
-                                            @if ( item.Status == "A" && item.idUsuarioCreador == idUsuario)
+                                            @if (item.Status == "A" && item.idUsuarioCreador == idUsuario)
                                             {
                                                 <a asp-page="./Adjuntar" asp-route-id="@item.id" title="Adjuntar" class="fa  fa-paperclip icono"> </a>
                                             }
                                             &nbsp;
-                                            
-
-                                                @if (!string.IsNullOrEmpty(Roles.Where(a => a == "32").FirstOrDefault()) && item.Status == "L")
-                                                {
-                                                  
-
-                                                        <a title="Crear asiento en SAP" class="icono" onclick="javascript: EnviarAsiento('@item.id')"><img src="~/img/sapX5.png" class="imgSAP" /></a>
-                                                    
-                                                }
 
 
-                                      
+                                            @if (!string.IsNullOrEmpty(Roles.Where(a => a == "32").FirstOrDefault()) && item.Status == "L")
+                                            {
+
+
+                                                <a title="Crear asiento en SAP" class="icono" onclick="javascript: onClickModal2('@item.id')"><img src="~/img/sapX5.png" class="imgSAP" /></a>
+
+                                            }
+
+
+
                                         </td>
 
                                     </tr>

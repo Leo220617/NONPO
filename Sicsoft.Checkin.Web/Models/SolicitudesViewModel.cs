@@ -23,6 +23,7 @@ namespace NONPO.Models
         public int idUsuarioAprobador { get; set; }
 
         public decimal TotalFacturas { get; set; }
+        public bool ProcesadoSAP { get; set; }
 
         public FacturasViewModel[] Facturas { get; set; }
 

@@ -222,6 +222,7 @@ namespace Sicsoft.Checkin.Web
 .ConfigureHttpClient(c => c.BaseAddress = new Uri($"{Configuration["UrlWebApi"]}/api/Compras"))
 .AddHttpMessageHandler<AuthenticatedHttpClientHandler>();
 
+
             return services;
         }
     }

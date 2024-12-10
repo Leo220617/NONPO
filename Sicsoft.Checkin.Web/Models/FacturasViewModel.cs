@@ -16,5 +16,7 @@ namespace NONPO.Models
         public decimal Monto { get; set; }
 
         public string CardCode { get; set; }
+
+        public bool ProcesadoSAP { get; set; }
     }
 }

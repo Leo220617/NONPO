@@ -22,6 +22,8 @@ namespace Sicsoft.Checkin.Web.Servicios
 
         [Post("")]
         Task<TEntity> Agregar([Body] TEntity payload);
+
+
         [Post("")]
         Task<TEntity> CambiarClave([Body] TEntity payload);
 
@@ -51,7 +53,7 @@ namespace Sicsoft.Checkin.Web.Servicios
         Task<TEntity> ObtenerHeader<TQuery>(TQuery q);
 
         [Get("/Insertar")]
-        Task<TEntity> InsertarAsiento(int idCierre);
+        Task<TEntity> InsertarAsiento(int idSolicitud);
 
         [Get("/RealizarLecturaEmail")]
         Task RealizarLecturaEmails();

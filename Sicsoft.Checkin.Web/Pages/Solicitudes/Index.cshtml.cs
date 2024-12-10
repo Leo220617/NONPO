@@ -21,6 +21,7 @@ namespace NONPO.Pages.Solicitudes
         private readonly ICrudApi<UsuariosViewModel, int> usuarios;
         private readonly ICrudApi<GastosViewModel, int> gastos;
         private readonly ICrudApi<RangosViewModel, int> rangos;
+        private readonly ICrudApi<DevolucionSAP, int> devolucion;
 
         [BindProperty(SupportsGet = true)]
         public ParametrosFiltros filtro { get; set; }
@@ -39,12 +40,13 @@ namespace NONPO.Pages.Solicitudes
         [BindProperty]
         public GastosViewModel[] Gastos { get; set; }
 
-        public IndexModel(ICrudApi<SolicitudesViewModel, int> service, ICrudApi<GastosViewModel, int> gastos, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<RangosViewModel, int> rangos)
+        public IndexModel(ICrudApi<SolicitudesViewModel,  int> service, ICrudApi<DevolucionSAP, int> devolucion, ICrudApi<GastosViewModel, int> gastos, ICrudApi<UsuariosViewModel, int> usuarios, ICrudApi<RangosViewModel, int> rangos)
         {
             this.service = service;
             this.gastos = gastos;
             this.usuarios = usuarios;
             this.rangos = rangos;
+            this.devolucion = devolucion;
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -117,6 +119,41 @@ namespace NONPO.Pages.Solicitudes
             catch (ApiException ex)
             {
                 return new JsonResult(false);
+            }
+        }
+
+        public async Task<IActionResult> OnGetEnviar(int id)
+        {
+            try
+            {
+            
+                await devolucion.InsertarAsiento(id);
+
+                var resp = new
+                {
+                    success = true,
+                    error = ""
+                };
+
+                return new JsonResult(resp);
+            }
+            catch (ApiException ex)
+            {
+                var resp = new
+                {
+                    success = false,
+                    error = ex.Content.ToString()
+                };
+                return new JsonResult(resp);
+            }
+            catch (Exception ex)
+            {
+                var resp = new
+                {
+                    success = false,
+                    error = ex.Message.ToString()
+                };
+                return new JsonResult(resp);
             }
         }
     }
