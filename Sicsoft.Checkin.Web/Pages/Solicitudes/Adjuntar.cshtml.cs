@@ -143,7 +143,7 @@ namespace NONPO.Pages.Solicitudes
             }
         }
         //Buscador de Facturas Electronicas
-        public async Task<IActionResult> OnGetBuscar(string id)
+        public async Task<IActionResult> OnGetBuscar(string idBusqueda)
         {
             try
             {
@@ -152,7 +152,7 @@ namespace NONPO.Pages.Solicitudes
                 //var ids = Convert.ToInt32(id);
 
                 ParametrosFiltros filt = new ParametrosFiltros();
-                filt.Texto = id;
+                filt.Texto = idBusqueda;
 
 
                 filt.FechaInicio = DateTime.Now;

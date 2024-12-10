@@ -191,10 +191,16 @@
 
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <h3>Facturas</h3>
                                         </div>
+                                        <div class="col-md-3" style="text-align: right">
+                                            <a asp-page="/RegistroProveedores/Nuevo" target="_blank" style="color: #57b846;" title="Agregar">
+                                                <i class="fa fa-plus"></i> Solicitar creación proveedor
+                                            </a>
+                                        </div>
                                         <div class="col-md-3" id="FacManual" style="text-align: right"> <a onclick="javascript: AbrirModal();" style="color: #57b846;" title="Agregar"><i class="fa fa-plus"></i> Agregar Factura Manual</a></div>
+                                      
                                     </div>
 
 
@@ -241,13 +247,22 @@
                                                 <label>Proveedor</label>
                                                 <input type="text" readonly class="form-control" id="Proveedor" placeholder="Proveedor" />
 
-
+                                                <input type="text" hidden class="form-control" id="CedulaP" placeholder="CedulaP" />
                                             </div>
 
 
                                         </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Card Code</label>
+                                                <input type="text" readonly class="form-control" id="CardCodeP" placeholder="CardCode" />
 
-                                        <div class="col-md-4">
+                                               
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Fecha</label>
                                                 <br />
@@ -327,7 +342,7 @@
                                         <div class="col-md-6">
 
                                             <label>Tipo de Gasto</label>
-                                            <select class="form-control select2" id="idTipoGastoEditar">
+                                            <select disabled class="form-control select2" id="idTipoGastoEditar">
                                                 <option value="0" selected>-Sin Asignar-</option>
                                                 @foreach (var item in Model.Gastos.OrderBy(a => a.Nombre))
                                                 {

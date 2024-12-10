@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NONPO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d84666c68e70a375c4445b0c23f11b6c25453326")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af309638f03b8f0559f762fb729c559a677bc2fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("NONPO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NONPO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
