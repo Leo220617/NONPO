@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\",
+  "WorkspaceRootPath": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\wwwroot\\js\\solicitudes\\adjuntarsolicitud.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\wwwroot\\js\\solicitudes\\adjuntarsolicitud.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\pages\\solicitudes\\adjuntar.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\solicitudes\\adjuntar.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\pages\\solicitudes\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\solicitudes\\editar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\pages\\solicitudes\\adjuntar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\pages\\solicitudes\\adjuntar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\steven rodriguez\\documents\\repositorios d\u0026d\\nonpo\\sicsoft.checkin.web\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\nonpo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\nonpo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|c:\\users\\larce\\documents\\github\\nonpo\\sicsoft.checkin.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{762623F6-323B-48B5-A3F4-1F12E7A67DEE}|Sicsoft.Checkin.Web\\NONPO.csproj|solutionrelative:sicsoft.checkin.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,83 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Startup.cs",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Startup.cs",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Startup.cs",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Startup.cs",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Startup.cs",
-              "ViewState": "AgIAAMsAAAAAAAAAAAAswN8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T15:28:41.818Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\appsettings.json",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\appsettings.json",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\appsettings.json",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-12-06T14:55:41.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdjuntarSolicitud.js",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\wwwroot\\js\\Solicitudes\\AdjuntarSolicitud.js",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\wwwroot\\js\\Solicitudes\\AdjuntarSolicitud.js",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\wwwroot\\js\\Solicitudes\\AdjuntarSolicitud.js",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\wwwroot\\js\\Solicitudes\\AdjuntarSolicitud.js",
-              "ViewState": "AgIAADQDAAAAAAAAAAAuwDkDAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-25T21:49:22.416Z",
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAowD8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T16:03:02.572Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Adjuntar.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml.cs",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml.cs",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml.cs",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAswHEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T21:45:22.347Z",
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-10T16:01:28.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Editar.cshtml",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Editar.cshtml",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Editar.cshtml",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Editar.cshtml",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Editar.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-25T21:45:20.939Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\appsettings.json",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\appsettings.json",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\appsettings.json",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-10T16:01:06.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NONPO",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\NONPO.csproj",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\NONPO.csproj",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\NONPO.csproj",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\NONPO.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-10T15:54:29.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Program.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Program.cs",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Program.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T15:38:49.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Adjuntar.cshtml",
-              "DocumentMoniker": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml",
-              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml",
-              "ToolTip": "C:\\Users\\Steven Rodriguez\\Documents\\Repositorios D\u0026D\\NONPO\\Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml",
-              "RelativeToolTip": "Sicsoft.Checkin.Web\\Pages\\Solicitudes\\Adjuntar.cshtml",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAAwAEBAACFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-22T20:28:38.609Z",
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Startup.cs",
+              "RelativeDocumentMoniker": "Sicsoft.Checkin.Web\\Startup.cs",
+              "ToolTip": "C:\\Users\\larce\\Documents\\GitHub\\NONPO\\Sicsoft.Checkin.Web\\Startup.cs",
+              "RelativeToolTip": "Sicsoft.Checkin.Web\\Startup.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAEwFYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T15:38:39.617Z",
               "EditorCaption": ""
             }
           ]

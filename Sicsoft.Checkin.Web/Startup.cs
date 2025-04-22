@@ -11,10 +11,15 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Graph;
+using Microsoft.Identity.Web;
+using Microsoft.AspNetCore.Authentication;
 using NONPO.Models;
 using Refit;
 
 using Sicsoft.Checkin.Web.Servicios;
+using Microsoft.Identity.Web.UI;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 
 
@@ -41,7 +46,11 @@ namespace Sicsoft.Checkin.Web
                options.ExpireTimeSpan = TimeSpan.FromMinutes(120);
                
            });
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+            .AddMicrosoftIdentityWebApp(Configuration.GetSection("AzureAd"));
 
+            services.AddControllersWithViews()
+                    .AddMicrosoftIdentityUI();
             services.AddHttpContextAccessor();
 
             services.AddScoped<AuthenticatedHttpClientHandler>();
@@ -72,6 +81,10 @@ namespace Sicsoft.Checkin.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseStatusCodePagesWithReExecute("/StatusCode", "?code={0}");
 

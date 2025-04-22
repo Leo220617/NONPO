@@ -64,6 +64,7 @@ namespace GestionGastos20.Pages.Account
                 return new JsonResult(ex.Message);
             }
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
