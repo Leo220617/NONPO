@@ -38,7 +38,7 @@ function onClickLogin() {
             localStorage.check = false;
 
         }
-       
+
     } catch (e) {
         alert(e);
     }
@@ -86,10 +86,11 @@ function Login() {
 
                 for (var i = 0; i < result.length; i++) {
 
+
                     if (i == 0) {
-                        t += '<option value="' + result[i].cedulaJuridica + '" selected >' + result[i].nombreEmpresa + '</option>';
+                        t += '<option value="' + (result[i].CedulaJuridica == undefined ? result[i].cedulaJuridica : result[i].CedulaJuridica) + '" selected >' + (result[i].NombreEmpresa == undefined ? result[i].nombreEmpresa : result[i].NombreEmpresa) + '</option>';
                     } else {
-                        t += '<option value="' + result[i].cedulaJuridica + '">' + result[i].nombreEmpresa + '</option>';
+                        t += '<option value="' + (result[i].CedulaJuridica == undefined ? result[i].cedulaJuridica : result[i].CedulaJuridica) + '">' + (result[i].NombreEmpresa == undefined ? result[i].nombreEmpresa : result[i].NombreEmpresa) + '</option>';
                     }
 
 
